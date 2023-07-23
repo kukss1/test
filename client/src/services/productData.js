@@ -29,19 +29,37 @@ export async function getAll(page, category, query) {
   }
 }
 
-export async function getAllMakers(page, make) {
+export async function getAllMakers(page, make, query) {
   try {
-    const response = await axios.get(`${baseUrl}/products/${make}`, {
-      params: { page },
-      withCredentials: true,
-    });
-    console.log("Data from API:", response.data);
-    return response.data;
+    console.log('getAllMakers - page:', page);
+    console.log('getAllMakers - make:', make);
+    console.log('getAllMakers - query:', query);
+    if (query !== "" && query !== undefined) {
+      const response = await axios.get(`${baseUrl}/products`, {
+        params: { page, search: query },
+        withCredentials: true,
+      });
+      return response.data;
+    } else if (make && make !== '') {
+      const response = await axios.get(`${baseUrl}/products/${make}`, {
+        params: { page },
+        withCredentials: true,
+      });
+      return response.data;
+    } else {
+      const response = await axios.get(`${baseUrl}/products`, {
+        params: { page },
+        withCredentials: true,
+      });
+      return response.data;
+    }
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
   }
 }
+
+
 
 export async function getSpecific(id) {
   const response = await axios.get(`${baseUrl}/products/specific/${id}`, {

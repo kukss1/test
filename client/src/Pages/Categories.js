@@ -59,7 +59,6 @@ function Categories({ match }) {
     e.preventDefault();
     setQuery(e.target.value);
   };
-
   return (
     <>
       <div className="search_Wrapper">

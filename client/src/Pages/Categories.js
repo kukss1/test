@@ -73,6 +73,7 @@ function Categories({ match }) {
       </div>
       <div className="categories_header">
         <CategoriesNav />
+        
       </div>
       <div className="categories_wrapper">
         <div className="dropdown-sort">

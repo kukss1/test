@@ -1,0 +1,90 @@
+.aside_product_price {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    color: var(--headers);
+}
+.product_price_heading {
+    font-size: 1.2rem;
+    margin-right: 5px;
+}
+.seller_avatar {
+    width: 125px;
+}
+
+.aside_contact_seller_btn {
+    background: none;
+    border: none;
+    color: var(--text);
+    height: 45px;
+    background-color: var(--orange);
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin-bottom: 15px;
+}
+.aside_contact_seller_btn {
+    cursor: pointer;
+}
+
+.aside_seller_body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.aside_seller_body > p {
+    font-size: 1.1rem;
+    color: var(--headers);
+}
+
+/* Message */
+
+
+.btn-close {
+    background: none;
+    border: none;
+    font-size: xx-large;
+}
+
+.modal_form {
+    background-color: var(--text);
+    padding: 15px;
+}
+
+.form_control {
+    min-width: 250px;
+    padding: 3px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--headers);
+}
+
+.msg_sned_btn {
+    border: none;
+    background: none;
+    height: 25px;
+    color: var(--text);
+    background-color: var(--orange);
+    border-radius: 3px;
+}
+.msg_close_btn {
+    border: none;
+    background: none;
+    margin-left: 5px;
+    height: 25px;
+    color: var(--text);
+    background-color: var(--indigo);
+    border-radius: 3px;
+}
+.msg_sned_btn , .msg_close_btn:hover {
+    cursor: pointer;
+}
+.guest_msg {
+    color: var(--headers);
+}
+.guest_msg > a {
+    color: var(--indigo);
+}
+.guest_msg > a:hover {
+    text-decoration: underline;
+}

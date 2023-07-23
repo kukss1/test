@@ -1,0 +1,24 @@
+
+
+::-webkit-scrollbar {
+    width: 0;
+  }
+  
+
+:root {
+    --headers :#212121;
+    --grey:#424242;
+    --text:#f2f2f0;
+    --night:#D9D9D9;
+    --lowGrey:#9e9e9e;
+    --dirtyWhite:#e0e0e0;
+    --body:#A5A686;
+    --indigo:#1a237e;
+    --orange:#ff5722;
+    --lowBlue:#1976d2;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text);
+}

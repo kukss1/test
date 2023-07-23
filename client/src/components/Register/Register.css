@@ -1,0 +1,137 @@
+form {
+    margin: 0 auto;
+    background-color: var(--dirtyWhite);
+    padding: 75px;
+    border-radius: 4px;
+}
+
+.auth_heading {
+    text-align: center;
+    padding: 20px;
+    color: var(--text);
+
+}
+.login_form_wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-content: center;
+    grid-gap: 15px;
+}
+
+.login_input_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+.login_input_wrapper > label {
+    color: var(--headers);
+    font-size: 1.2rem;
+}
+.login_input_wrapper > p{
+    color: var(--indigo);
+}
+.login_input_wrapper input {
+    width: 350px;
+    background: none;
+    border: none;
+    border-bottom:solid 1px var(--body);
+    margin-top: 15px;
+    margin-left: 15px;
+    color: var(--headers);
+}
+.login_input_wrapper input:focus {
+    outline: none;
+}
+.password_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+.password_wrapper > label {
+    color: var(--headers);
+    font-size: 1.2rem;
+}
+.password_wrapper > p {
+    color: var(--indigo);
+}
+.password_wrapper input {
+    width: 350px;
+    background: none;
+    border: none;
+    border-bottom:solid 1px var(--body);
+    margin-top: 15px;
+    margin-left: 15px;
+    color: var(--headers);
+}
+.password_wrapper input:focus {
+    outline: none;
+}
+
+.login_sign_btn {
+    margin-top: 25px;
+    margin-left: 25px;
+    width: 100px;
+    height: 40px;
+    font-size: 1.1rem;
+    background: none;
+    border: none;
+    color: var(--text);
+    background-color: var(--orange);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.login_sign_btn:hover {
+    cursor: pointer;
+    opacity: 0.75;
+}
+.wait_btn {
+    margin-top: 25px;
+    margin-left: 25px;
+    width: 100px;
+    height: 40px;
+    font-size: 1.1rem;
+    background: none;
+    border: none;
+    color: var(--text);
+    background-color: var(--indigo);
+    border-radius: 10px;
+}
+
+
+.btnAuth {
+    margin-top: 3%;
+}
+
+.bottom-msg-paragraph {
+    text-align: center;
+    padding-top: 20px;
+    color: var(--text);
+    font-size: 1.1rem;
+}
+.bottom-msg-paragraph > a {
+    color: var(--indigo);
+    margin-left: 3px;
+}
+.bottom-msg-paragraph {
+    color: var(--headers);
+}
+
+.bottom-msg-paragraph a:hover {
+    text-decoration: underline;
+}
+.auth-form {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--lowGrey);
+    padding-bottom: 35px;
+}
+
+.form-text ,.muted {
+    color: var(--text);
+}
+
+.alert ,.alert-danger {
+    color: var(--text);
+}

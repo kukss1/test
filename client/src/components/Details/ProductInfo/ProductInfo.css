@@ -1,0 +1,140 @@
+.home_product_card_wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 15px;
+    margin-top: 15px;
+    width: 20vw;
+    min-height: 300px;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: var(--dirtyWhite);
+    box-shadow: 1px 1px 1px 1px gray;
+}
+.home_product_card_body {
+    display: flex;
+    flex-direction: column;
+    color: var(--headers);
+    height: 100%;
+    justify-content: space-around;
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+.product_card_wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 700px;
+    background-color: var(--text);
+    margin: 0;
+}
+.details_products_wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 55px;
+}
+.product_card_header {
+    color: var(--headers);
+}
+.product_card_img {
+    width: 300px;
+}
+.heart_icon {
+    background: none;
+    border: none;
+    color: var(--orange);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+.product_card_details_btn {
+    background: none;
+    border: none;
+    height: 35px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: var(--indigo);
+    color: var(--text);
+    margin:15px 0;
+    transition: 0.3s;
+}
+.product_card_details_btn:hover {
+    cursor: pointer;
+    background-color: var(--dirtyWhite);
+    color: var(--body);
+    border-bottom: 1px solid var(--indigo);
+
+
+}
+
+/* Product Info */
+
+.tab_content {
+    color: var(--text);
+}
+
+.text_muted {
+    font-size: 0.6rem;
+    margin-top: 15px;
+    color: var(--indigo);
+}
+
+
+.tab_content_body > p {
+    width: 50vw;
+    height: 130px;
+    border-radius: 5px;
+    background-color: var(--dirtyWhite);
+    color: var(--headers);
+    padding-top: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    word-break: break-all;
+    
+}
+
+/* breadcrumb  */
+
+.breadcrumb_ul {
+    display: flex;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.breadcrumb_ul > li {
+    margin-left: 15px;
+    list-style: none;
+}
+
+@media (max-width:480px) {
+    .home_product_card_wrapper {
+        width: 80vw;
+    }
+    .details_products_wrapper {
+        width: 100vw;
+        height: 75vh;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+    .details_product {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+    }
+    .product_card_img  {
+        width: 25vw;
+        height: 70px;
+        margin: 0;
+        padding: 0;
+    }
+    .product_card_header {
+        font-size: 0.8rem;
+    }
+    .product_card_details_btn {
+        width: 55px;
+        height: 20px;
+    }
+    
+}

@@ -1,0 +1,11 @@
+.simpleSider {
+    background-image: url(../../Logos/engine.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+    padding-top: 80px;
+
+}
+.simpleSider_wrapper {
+    background-color: var(--night);
+}

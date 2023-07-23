@@ -1,0 +1,104 @@
+/* Categories.js */
+
+.categories_wrapper {
+    width: 100%;
+    background-color: var(--lowGrey);
+}
+
+.categories_wrapper > .dropdown-sort {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}
+
+.categories_header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 125px;
+    background-color: var(--headers);
+}
+
+.categories_header >h1 {
+    color: var(--text);
+}
+.sort {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    color: var(--text);
+}
+.dropdown-sort {
+    display: flex;
+    align-items: center;
+    background-color: var(--lowGrey);
+    padding-bottom: 15px;
+}
+.categories_btn_wrapper > button {
+    width: 85px;
+    height: 25px;
+    background-color: var(--indigo);
+    border: none;
+    margin-left: 10px;
+    border-radius: 5px;
+    color: var(--text);
+    transition: 0.3s;
+}
+.categories_btn_wrapper > button:hover {
+    cursor: pointer;
+}
+
+/* Categories Navigation  */
+
+
+.categories_nav_wrapper > h1 {
+    text-align: center;
+    padding-bottom: 15px;
+    color: var(--text);
+}
+.categories_nav_btn {
+    width: 150px;
+    height: 35px;
+    border: none;
+    background-color: var(--indigo);
+    margin-left: 10px;
+    border-radius: 5px;
+    color: var(--text);
+    transition: 0.4s;
+}
+.categories_nav_btn:hover {
+    cursor: pointer;
+    background-color: var(--headers);
+    border-bottom: 3px solid var(--indigo);
+}
+
+/* mobile  */
+
+@media (max-width:480px) {
+    .categories_nav_wrapper > h1 {
+        font-size: 1rem;
+    }
+    .categories_nav_btn {
+        font-size: 0.5rem;
+        width: 45px;
+        height: 25px;
+        background: none;
+    }
+    .categories_nav_btn:hover {
+        border: none;
+        background: none;
+    }
+    .sort {
+        font-size: 0.8rem;
+    }
+    .categories_btn_wrapper {
+        height: 25px;
+    }
+    .categories_btn_wrapper > button {
+        background: none;
+        border: none;
+        font-size: 0.7rem;
+        width: 55px;
+        padding-bottom: 0;
+    }
+}

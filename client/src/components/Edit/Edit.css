@@ -1,0 +1,58 @@
+.edit_form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: baseline;
+}
+.edit_items {
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+    margin-bottom: 5px;
+}
+.edit_items > label {
+    font-size: 1.1rem;
+    color: var(--headers);
+    margin-bottom: 3px;
+}
+.edit_items > input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--headers);
+}
+.edit_items > input:focus {
+    outline: none;
+}
+.edit_items_body {
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+    margin-bottom: 5px;
+}
+.edit_items_body > label {
+    font-size: 1.1rem;
+    color: var(--headers);
+    margin-bottom: 3px;
+}
+.edit_items_body > textarea {
+    padding-top: 15px;
+    margin-top: 15px;
+    resize: none;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--headers);
+    border-right: 1px solid var(--headers);
+    min-width: 350px;
+}
+.edit_items_body > textarea:focus {
+    outline: none;
+}
+
+.edit_add_btn {
+    width: 120px;
+    height: 35px;
+    background: none;
+    border: none;
+    color: var(--text);
+    background-color: var(--orange);
+    border-radius: 3px;
+}

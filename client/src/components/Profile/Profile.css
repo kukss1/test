@@ -1,0 +1,78 @@
+.profile_head {
+    background-color: var(--night);
+}
+
+.seller_avatar_wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+.seller_profile_avatar_wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.seller_profile_avatar {
+    width: 100vw;
+    height: 350px;
+}
+
+.seller_profile_info {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--headers);
+    height: 55px;
+}
+.seller_profile_info > p {
+    display: flex;
+    align-items: center;
+    color: var(--text);
+    border-radius: 15px;
+    padding: 5px;
+    opacity: 0.8;
+}
+.edit_profile_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--headers);
+    padding-left: 50px;
+    height: 35px;
+    color: var(--orange);
+}
+.edit_profile_icon > a {
+    color: var(--lowBlue);
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+.edit_profile_icon svg {
+    margin-left: 15px;
+}
+
+.seller_list_menu {
+    display: flex;
+    align-items: center;
+    padding-left: 35px;
+    height: 50px;
+    background-color: var(--headers);
+}
+.seller_list_menu > button {
+    background: none;
+    border: none;
+    height: 35px;
+    width: 125px;
+    color: var(--text);
+    margin: 15px;
+    background-color: var(--lowBlue);
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.seller_list_menu > button:hover {
+    cursor: pointer;
+    background-color: var(--indigo);
+}
+
+.profile_active_sales {
+    margin-bottom: 15px;
+}

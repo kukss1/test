@@ -11,14 +11,19 @@ const Makers = ({ match }) => {
 
   useEffect(() => {
     setLoading(true);
-    getAllMakers(page, currentMake, "")
-      .then((res) => {
-        setProducts(res.products);
+    const fetchData = async () => {
+      try {
+        const res = await getAllMakers(page, currentMake, "");
+        setProducts((prevProducts) => [...prevProducts, ...res.products]);
         setLoading(false);
-      })
-      .catch((err) => console.log(err));
+        setPage((prevPage) => (res.products.length > 0 ? prevPage + 1 : prevPage));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
   }, [currentMake, page]);
-
+  
   return (
     <div>
       <Link to="/makers/BMW">BMW</Link>
@@ -27,6 +32,7 @@ const Makers = ({ match }) => {
           <ProductCard params={x} />
         </div>
       ))}
+      {loading && <div>Loading...</div>} {/* Отображаем индикатор загрузки, пока идет запрос */}
     </div>
   );
 };

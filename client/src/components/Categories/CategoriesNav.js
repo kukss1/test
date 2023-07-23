@@ -31,6 +31,9 @@ function CategoriesNav() {
             <Link to="/categories/Աքսեսուարներ">
                 <button className="categories_nav_btn">Աքսեսուարներ</button>{' '}
             </Link>
+            <Link to="/makers">
+                <button className="categories_nav_btn">Makers</button>{' '}
+            </Link>
         </div>
     );
 }

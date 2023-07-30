@@ -1,0 +1,7 @@
+.heading {
+    color: var(--headers);
+}
+
+.profile_sells {
+    display: flex;
+}

@@ -47,10 +47,10 @@ function ProductInfo({ params }) {
                 </span>
             </div>
             <div id="detailsCardText" className="col-lg-12">
-                <div className="tab">
+                {/* <div className="tab">
                     <button className="product_card_details_btn">Details</button>
-                    {/* <button className="tablinks">About Seller</button> */}
-                </div>
+                    <button className="tablinks">About Seller</button>
+                </div> */}
                 <div className="tab_content">
                     <div className="tab_content_item">
                     <span className='tab_content_body'>

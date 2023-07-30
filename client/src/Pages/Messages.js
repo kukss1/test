@@ -38,7 +38,7 @@ function Messages({ match }) {
     if (isSelected) {
       setSelected(conversations.find((x) => x.chats._id === chatId));
     }
-  }, [isSelected, chatId, setSelected,conversations]);
+  }, [isSelected, chatId, setSelected, conversations]);
 
   function handleMsgSubmit(e) {
     e.preventDefault();
@@ -60,10 +60,10 @@ function Messages({ match }) {
   }
 
   return (
-    <div className="messenger_wrapper">
-      <div>
-        <aside>
-          <h3 className="messages_header">Նամակներ</h3>
+    <>
+      <h3 className="messages_header">Նամակներ</h3>
+      <div className="messenger_wrapper">
+        <aside className="messenger_wrapper_aside">
           {conversations.length >= 1 ? (
             <div className="chat_connections_wrapper">
               {conversations.map((x) => (
@@ -97,12 +97,12 @@ function Messages({ match }) {
               <div className="chat_member_wrapper">
                 {selected.isBuyer ? (
                   <Link to={`/profile/${selected.chats.seller._id}`}>
-                    <img src={selected.chats.seller.avatar} alt="user-avatar" />
+                    {/* <img src={selected.chats.seller.avatar} alt="user-avatar" /> */}
                     <span>{selected.chats.seller.name}</span>
                   </Link>
                 ) : (
                   <Link to={`/profile/${selected.chats.buyer._id}`}>
-                    <img src={selected.chats.buyer.avatar} alt="user-avatar" />
+                    {/* <img src={selected.chats.buyer.avatar} alt="user-avatar" /> */}
                     <span>{selected.chats.buyer.name}</span>
                   </Link>
                 )}
@@ -123,9 +123,10 @@ function Messages({ match }) {
                 ))}
               </div>
               <div>
-                <form 
-                className="message_write_wrapper"
-                onSubmit={handleMsgSubmit}>
+                <form
+                  className="message_write_wrapper"
+                  onSubmit={handleMsgSubmit}
+                >
                   <div>
                     <div className="message_send_area">
                       <textarea
@@ -135,9 +136,9 @@ function Messages({ match }) {
                         onChange={(e) => setMessage(e.target.value)}
                       ></textarea>
                       <div>
-                        <button 
-                        className="message_btn"
-                        type="submit">Ուղարկել</button>
+                        <button className="message_btn" type="submit">
+                          Ուղարկել
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -147,7 +148,7 @@ function Messages({ match }) {
           )}
         </article>
       </div>
-    </div>
+    </>
   );
 }
 

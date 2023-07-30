@@ -5,7 +5,6 @@ const isAuth = require('../middlewares/isAuth');
 const Product = require('../models/Product');
 const User = require('../models/User');
 const moment = require('moment');
-
 const productService = require('../services/productService');
 
 router.get('/', async (req, res) => {
@@ -18,7 +17,7 @@ router.get('/', async (req, res) => {
       products = products.filter(
         (x) =>
           x.title.toLowerCase().includes(search.toLowerCase()) ||
-          x.city.toLowerCase().includes(search.toLowerCase())
+          x.make.toLowerCase().includes(search.toLowerCase())
       );
       res.status(200).json({ products: products, pages: products.pages });
     } else {

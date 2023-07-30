@@ -20,17 +20,17 @@ function Wishlist() {
         <>
             {!loading ? (
                 <>
-                    <h1 className="heading">Wishlist</h1>
+                    <h1 className="heading">Նախնտրած</h1>
                     {products.length > 0 ? (
-                        <div className="row">
+                        <div className="profile_sells">
                             {products.map((product) => (
-                                <div className="col-lg-4 col-md-6" key={product._id.toString()}>
+                                <div className="profile_sells_items" key={product._id.toString()}>
                                     <ProductCard params={product} />
                                 </div>
                             ))}
                         </div>
                     ) : (
-                        <p className="nothing-to-show">Nothing to show</p>
+                        <p className="nothing-to-show">Ապրանքներ առկա չեն</p>
                     )}
                 </>
             ) : (

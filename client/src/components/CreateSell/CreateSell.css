@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text);
+    color: var(--headers);
     font-family: serif;
     height: 60px;
     border-bottom: 2px solid var(--dirtyWhite);

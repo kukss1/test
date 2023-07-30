@@ -50,16 +50,16 @@ function Aside({ params, history }) {
                 <div className="aside_product_price">
                     <h4 className="product_price_heading">Գին - </h4>
                     {params.isSeller && (
-                        <>
+                        <div className='product_edit_icons'>
                             <span>
                                 <Link to={`/categories/${params.category}/${params._id}/edit`}><GrEdit /></Link>
                             </span>
                             <span onClick={handleShowArchive}>
                                 <MdArchive />
                             </span>
-                        </>
+                        </div>
                     )}
-                    {params.price && <h1>{(params.price).toFixed(2)}֏</h1>}
+                    {params.price && <h1 className='product_price_header'>{(params.price).toFixed(2)}֏</h1>}
                 </div>
                 {params.isAuth ? (
                     <>
@@ -117,18 +117,17 @@ function Aside({ params, history }) {
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title">Are you sure you want to archive this item?</h5>
+                                <h5 className="modal-title">վստա՞հ եք որ ուզում եք արխիվացնել այս հայտարարությունը </h5>
                                 <button type="button" className="btn-close" onClick={handleCloseArchive}></button>
                             </div>
                             <div className="modal-body">
                                 <p>
-                                    By clicking <strong>Archive</strong>, this sell will change its status to <strong>Archived</strong>, which means that no one but you will be able to see it. You may want to change the status to <strong>Active</strong> if you have sold the item or you don't want to sell it anymore.
-                                </p>
-                                <p>Don't worry, you can unarchive it at any time from Profile - Sells!</p>
+                                    Սեղմելով <strong>Արխիվացնել</strong>, հայտարարության կարգավիճակը կպոխվի <strong>Արխիվացվածի</strong>,ինչը նշանակում է, որ ձեզանից բացի ոչ ոք չի կարողանա տեսնել այն: Դուք կարող եք փոխել կարգավիճակը <strong>Ակտիվ</strong>, եթե դուք վաճառել եք ապրանքը կամ այլևս չեք ցանկանում վաճառել այն:
+                                </p> <p>Դուք հետագայում կարող եք փոխել կարգավիճակը ձեր անձնական էջից </p>
                             </div>
                             <div className="modal-footer">
-                                <button className="btn btn-secondary" onClick={handleCloseArchive}>Close</button>
-                                <button className="btn btn-success" onClick={handleSubmit}>Archive</button>
+                                <button className="btn btn-secondary" onClick={handleCloseArchive}>Փակել</button>
+                                <button className="btn btn-success" onClick={handleSubmit}>Արխիվացնել</button>
                             </div>
                         </div>
                     </div>

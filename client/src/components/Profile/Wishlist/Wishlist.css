@@ -3,3 +3,6 @@
     font-family: serif;
     font-size: 20pt;
 }
+.profile_sells {
+    display: flex;
+}

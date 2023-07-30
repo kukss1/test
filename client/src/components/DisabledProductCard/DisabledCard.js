@@ -23,7 +23,7 @@ function DisabledCard({ params, history }) {
         <img className="card-img-top" src={params.image} alt="Card" />
         <div className="card-body">
           <h5 className="card-title">{params.title}</h5>
-          <p className="card-text">{params.price}€</p>
+          <p className="card-text">{params.price}֏</p>
         </div>
         <div className="card-footer">
           <small className="text-muted">

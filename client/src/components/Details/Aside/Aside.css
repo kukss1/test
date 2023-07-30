@@ -1,8 +1,15 @@
+.product_details_seller_aside {
+    border-top: 2px solid var(--lowGrey);
+    border-left: 2px solid var(--lowGrey);
+    border-right: 2px solid var(--lowGrey);
+    border-radius: 5px
+}
 .aside_product_price {
     display: flex;
     align-items: center;
     margin: 10px;
     color: var(--headers);
+    border-bottom: 1px solid var(--lowGrey);
 }
 .product_price_heading {
     font-size: 1.2rem;
@@ -10,6 +17,13 @@
 }
 .seller_avatar {
     width: 125px;
+}
+.product_edit_icons > span > a {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.product_price_header {
+    margin-left: 5px;
 }
 
 .aside_contact_seller_btn {
@@ -31,10 +45,13 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    background-color: var(--lowGrey);
+    padding: 5px;
 }
 .aside_seller_body > p {
     font-size: 1.1rem;
     color: var(--headers);
+    border-bottom: 1px solid var(--text);
 }
 
 /* Message */

@@ -24,17 +24,17 @@ function ActiveSells({ params, history }) {
     <>
       {!loading ? (
         <>
-          <h1 className="heading">Active Sells</h1>
+          <h1 className="heading">Ակտիվ Ապրանքներ</h1>
           {products ? (
-            <div className="row">
+            <div className="profile_sells">
               {products.map(x => (
-                <div className="col-xs-12 col-md-6 col-lg-4" key={x._id.toString()}>
+                <div className="profile_sells_items" key={x._id.toString()}>
                   <ProductCard params={x} />
                 </div>
               ))}
             </div>
           ) : (
-            <p className="nothing-to-show">Nothing to show</p>
+            <p className="nothing-to-show">Ապրանքներ առկա չեն</p>
           )}
         </>
       ) : (

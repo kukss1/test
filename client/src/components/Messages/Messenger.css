@@ -1,5 +1,11 @@
-.messenger_wrapper {
-    display: flex;
+.messenger_wrapper  {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    background-color: var(--headers);
+}
+.messenger_wrapper_aside {
+    height: 100%;
+    background-color: var(--headers);
 }
 .messages_header {
     padding-top: 15px;
@@ -11,15 +17,13 @@
 }
 .chat_connections_wrapper {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    width: 100vw;
-    height: 75px;
-    background-color: var(--headers);
 }
 
 .chat_connections {
-    margin-left: 15px;
-    width: 100vw;
+    /* margin-left: 15px; */
+    border-bottom: 1px solid var(--text);
 }
 .chat_connections > a:hover {
     color: var(--lowBlue);
@@ -34,16 +38,16 @@
 /* Article */
 
 .chat_article_wrapper {
-    background-color: var(--dirtyWhite);
+    /* background-color: var(--dirtyWhite); */
+    background-color: var(--headers);
 }
 
 .chat_member_wrapper {
     display: flex;
     justify-content: center;
     margin-bottom: 15px;
-    background-color: var(--grey);
-    border-top: 3px solid var(--lowGrey);
-    width: 100vw;
+    background-color: var(--headers);
+    border-top: 3px solid var(--headers);
 }
 .chat_member_wrapper > a {
     display: flex;
@@ -51,17 +55,15 @@
     align-items: center;
 }
 .chat_member_wrapper > a > span {
-    color: var(--taxt);
-}
-.chat_member_wrapper > a >img {
-    width: 100px;
+    color: var(--text);
+    font-size: 1.2rem;
 }
 
 /* Message  */
 
 .message_wrapper {
-    background-color: var(--text);
-    height: 75vh;
+    background-color: var(--headers);
+    min-height: 50vh;
     overflow-y: scroll;
 }
 
@@ -97,8 +99,10 @@
 /* ///////////// */
 
 .message_write_wrapper {
-    background-color: var(--grey);
+    background-color: var(--headers);
     height: 75px;
+    display: flex;
+    align-items: center;
 }
 
 .message_send_area {
@@ -113,7 +117,7 @@
     background-color: var(--text);
     margin: 0;
     height: 32px;
-    width: 750px;
+    width: 25vw;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     padding-left: 10px;

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import ActiveSells from '../components/Profile/Sells/ActiveSells';
 import { getUser, editUserProfile } from '../services/userData';
-import { Col, Row, Button, OverlayTrigger, Tooltip, Spinner, Alert } from 'react-bootstrap';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { MdEmail, MdPhoneAndroid } from 'react-icons/md'
 import { TiTick } from 'react-icons/ti'
@@ -79,69 +78,62 @@ function EditProfile({ history }) {
     return (
         <>
             <div id="profile-head">
-                <div className="container">
-                    <form className="col-lg-12">
+                <div className="edit_profile_wrapper">
+                    <form className="edit_profile_form">
                         {alertShow &&
-                            <Alert variant="danger" onClose={() => setAlertShow(false)} dismissible>
+                            <div variant="danger" onClose={() => setAlertShow(false)} dismissible>
                                 <p>
                                     {error}
                                 </p>
-                            </Alert>
+                            </div>
                         }
-                        <Row className="profile-row">
-                            <Col lg={3} md={5} sm={12}>
+                        <div className="profile-row">
+                            <div>
                                 <label htmlFor="file-upload" className="custom-file-upload">
-                                    <OverlayTrigger placement="bottom"
-                                        overlay={<Tooltip>Click to select a photo</Tooltip>}
-                                    >
-                                        <img id="avatar" src={user.avatar} alt="user-avatar"/>
-                                    </OverlayTrigger>
+                                        <img className="edit_profile_avatar" src={user.avatar} alt="user-avatar"/>
+                                   
                                 </label>
                                 <input id="file-upload" type="file" name="avatar" onChangeCapture={handleChanges} />
-                            </Col>
-                            <Col lg={4} md={3} sm={12}>
-                                <p><BsFillPersonFill /> <input type="text" name="name" value={user.name} onChange={handleChanges} required /></p>
-                                <p><MdEmail /> <input type="email" name="email" value={user.email} onChange={handleChanges} required /></p>
-                                <p><MdPhoneAndroid /> <input type="text" name="phoneNumber" value={user.phoneNumber} onChange={handleChanges} required /></p>
-                                {/* TODO user password changes:
-                                <p><RiLockPasswordFill /> <input type="password" name="oldPassword" placeholder="Old password" onChange={handleChanges} required /></p>
-                                <p><RiLockPasswordFill /> <input type="password" name="newPassword" placeholder="New password" onChange={handleChanges} required /></p>
-                                <p><RiLockPasswordFill /> <input type="password" name="repNewPassword" placeholder="Repeat new password" onChange={handleChanges} required /></p> */}
-                            </Col>
-                            <Col lg={2} id="edit-profile-icons">
+                            </div>
+                            <div className='edit_profile_input'>
+                                <p><BsFillPersonFill /> <input className='edit_input' type="text" name="name" value={user.name} onChange={handleChanges} required /></p>
+                                <p><MdEmail /> <input className='edit_input' type="email" name="email" value={user.email} onChange={handleChanges} required /></p>
+                                <p><MdPhoneAndroid /> <input className='edit_input' type="text" name="phoneNumber" value={user.phoneNumber} onChange={handleChanges} required /></p>
+                            </div>
+                            <div>
                                 {loading ? (
-                                    <Spinner animation="border" />
+                                    <p>Loading...</p>
                                 ) : (
-                                        <>
-                                            <OverlayTrigger placement="bottom"
-                                                overlay={<Tooltip> Save changes</Tooltip>}
-                                            >
+                                        <div className='edit_input_btn'>
+                                            <span title='Save changes'></span>
+                                                
+                                            
                                                 <span onClick={handleSave}><TiTick /></span>
-                                            </OverlayTrigger>
-                                            <OverlayTrigger placement="bottom"
-                                                overlay={<Tooltip>Discard changes </Tooltip>}
-                                            >
+                                            
+                                            <span title='Discard changes'></span>
+                                            
+                                            
                                                 <span onClick={handleDiscard}><AiFillCloseSquare /></span>
-                                            </OverlayTrigger>
-                                        </>
+                                            
+                                        </div>
                                     )}
 
-                            </Col>
-                        </Row>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
             <div className="container">
-                <Row>
-                    <Col lg={2} sm={12} id="aside">
-                        <Button disabled variant="dark" id="active-sells">Active Sells</Button>{' '}
-                        <Button disabled variant="dark" id="archived-sells">Archived</Button>{' '}
-                        <Button disabled variant="dark" id="wishlist">Wishlist</Button>{' '}
-                    </Col>
-                    <Col lg={10} sm={12} disabled>
+                <div>
+                    <div lg={2} sm={12} id="aside">
+                        <button disabled  id="active-sells">Ակտիվ</button>{' '}
+                        <button disabled  id="archived-sells">Արխիվացված</button>{' '}
+                        <button disabled  id="wishlist">Նախնտրած</button>{' '}
+                    </div>
+                    <div lg={10} sm={12} disabled>
                         <ActiveSells params={user}/>
-                    </Col>
-                </Row>
+                    </div>
+                </div>
             </div>
         </>
     )

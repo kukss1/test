@@ -76,3 +76,88 @@
 .profile_active_sales {
     margin-bottom: 15px;
 }
+/* edit profile  */
+
+.edit_profile_form {
+    background-color: var(--dirtyWhite);
+}
+
+.edit_profile_avatar {
+    height: 30vh;
+}
+.edit_profile_input {
+    padding-left: 5vw;
+    background-color: rgba(94, 92, 92, 15%);
+}
+.edit_input {
+    background: none;
+    border: none;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    border-bottom: 1px solid var(--headers);
+}
+.edit_input_btn {
+    background-color: rgba(94, 92, 92, 15%);
+}
+.edit_input_btn span svg {
+    font-size: 2rem;
+    fill: var(--indigo);
+    padding-left: 5vw;
+}
+
+
+/* Seller Profile  */
+
+.profile_row {
+    padding-left: 3vw;
+}
+.modal_contact_seller {
+    padding-left: 5vw;
+}
+.contact_seller_textarea {
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--headers);
+    width: 15vw;
+}
+.seller_modal_footer {
+    padding-top: 2vh;
+}
+.seller_modal_footer button {
+    width: 8vw;
+    height: 3vh;
+    margin-left: 1vw;
+    border-radius: 5px;
+    background: none;
+    border: none;
+    background-color: var(--orange);
+    color: var(--text);
+    
+}
+.seller_profile_body p {
+    border-bottom: 1px solid var(--text);
+}
+.seller_profile_body {
+    padding-bottom: 2vh;
+}
+/* mobile  */
+
+@media (max-width:490px) {
+    .seller_profile_info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .profile_svg {
+        fill: wheat;
+    }
+    .profile_sells {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .seller_modal_footer button {
+        width: 18vw;
+    }
+    .close {
+        width: 10vw;
+    }
+    }

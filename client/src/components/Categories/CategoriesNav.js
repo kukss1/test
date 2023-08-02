@@ -7,6 +7,7 @@ function CategoriesNav() {
     return (
         <div className="categories_nav_wrapper" >
             <h1>Կատեգորիաներ</h1>
+            <div className='categories_nav_links'>
             <Link to="/categories/all">
                 <button className="categories_nav_btn"><TiSortAlphabetically />Բոլորը</button>{' '}
             </Link>
@@ -34,6 +35,7 @@ function CategoriesNav() {
             <Link to="/makers">
                 <button className="categories_nav_btn">Makers</button>{' '}
             </Link>
+            </div>
         </div>
     );
 }

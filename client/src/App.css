@@ -1,21 +1,24 @@
 * {
     margin: 0;
+    font-family: 'Chakra Petch', sans-serif;
+    /* font-family: 'Nunito Sans', sans-serif; */
 }
 
 
 .infinite-scroll-component {
 
-    display:grid!important; 
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    width: 100%!important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100vw !important;
     background-color: var(--text);
     padding-bottom: 25px;
 }
 
-@media (max-width:480px) {
+@media (max-width:490px) {
     .infinite-scroll-component {
-        display: grid!important;
+        display: grid !important;
         grid-template-columns: 1fr 1fr;
+        width: 100vw;
 
     }
 }

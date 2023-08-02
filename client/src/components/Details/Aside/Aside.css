@@ -105,3 +105,16 @@
 .guest_msg > a:hover {
     text-decoration: underline;
 }
+
+@media (max-width:490px) {
+    .product_details_seller_aside {
+        width: 90vw;
+        margin-top: 5vh;
+        margin-right: 5vw;
+        margin-right: 5vw;
+        margin-bottom: 5vh;
+    }
+    .modal_footer {
+        margin-bottom: 5vh;
+    }
+}

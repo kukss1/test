@@ -7,6 +7,8 @@ const User = require('../models/User');
 const moment = require('moment');
 const productService = require('../services/productService');
 
+
+
 router.get('/', async (req, res) => {
   const { page, search } = req.query;
   try {
@@ -44,12 +46,48 @@ router.get('/:category', async (req, res) => {
 });
 
 router.get('/:make', async (req, res) => {
-  const { page } = req.query;
+  const { page, search, make, title, description, year } = req.query;
+
+  // Создаем пустой объект для фильтрации запроса
+  const query = {};
+
+  // Добавляем фильтрацию по производителю, если задан параметр 'make'
+  if (make) {
+    const regex = new RegExp(make, 'i');
+    query.make = { $regex: regex };
+  }
+
+  // Добавляем фильтрацию по поисковому запросу, если задан параметр 'search'
+  if (search) {
+    const regex = new RegExp(search, 'i'); // 'i' означает регистронезависимый поиск
+    query.$or = [
+      { title: { $regex: regex } },
+      { description: { $regex: regex } },
+      { year: { $regex: regex } },
+      { made: { $regex: regex } },
+    ];
+  }
+
+  // Добавляем фильтрацию по названию, если задан параметр 'title'
+  if (title) {
+    const regex = new RegExp(title, 'i');
+    query.title = { $regex: regex };
+  }
+
+  // Добавляем фильтрацию по описанию, если задан параметр 'description'
+  if (description) {
+    const regex = new RegExp(description, 'i');
+    query.description = { $regex: regex };
+  }
+
+  // Добавляем фильтрацию по году, если задан параметр 'year'
+  if (year) {
+    const regex = new RegExp(year, 'i');
+    query.year = { $regex: regex };
+  }
+
   try {
-    let products = await Product.paginate(
-      { make: req.params.make },
-      { page: parseInt(page) || 1, limit: 10 }
-    );
+    let products = await Product.paginate(query, { page: parseInt(page) || 1, limit: 10 });
     console.log("Products found:", products.docs);
     res.status(200).json({ products: products.docs, pages: products.pages });
   } catch (error) {
@@ -57,6 +95,9 @@ router.get('/:make', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+
+
 
 
 

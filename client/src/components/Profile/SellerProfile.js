@@ -30,12 +30,12 @@ function SellerProfile({ params, history }) {
   return (
     <>
       <div className="profile_head">
-        <div className="container">
-          <div className="profile-row">
-            <div className="col-lg-2 col-md-5 col-sm-12">
+        <div className="seller_profile_wrapper">
+          <div className="profile_row">
+            <div>
               <img className="seller_avatar" alt="avatar" src={params.avatar} />
             </div>
-            <div className="col-lg-2 col-md-3 col-sm-12">
+            <div className="seller_profile_body">
               <p>
                 <BsFillPersonFill /> {params.name}
               </p>
@@ -46,13 +46,13 @@ function SellerProfile({ params, history }) {
                 <MdPhoneAndroid /> {params.phoneNumber}
               </p>
               <p>
-                <FaSellsy /> {params.totalSells} sells in total
+                <FaSellsy /> {params.totalSells} Ընդհանուր վաճառք
               </p>
             </div>
             <div className="col-lg-3 col-md-4 col-sm-12">
-              <button className="btn-dark col-lg-10" id="btnContact" onClick={handleShow}>
+              <button className="aside_contact_seller_btn" id="btnContact" onClick={handleShow}>
                 <RiMessage3Fill />
-                Contact Seller
+                Կապ Հաստատել
               </button>
             </div>
           </div>
@@ -60,36 +60,37 @@ function SellerProfile({ params, history }) {
       </div>
       <div className="container">
         <div className="row">
-          <div className="col-lg-12">
-            <ActiveSells params={params} />
-          </div>
+
         </div>
       </div>
       {showMsg && (
-        <div className="modal" style={{ display: 'block' }}>
+        <div className="modal_contact_seller" style={{ display: 'block' }}>
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">Message</h5>
+                <h5 className="modal-title">Գրել Նամակ</h5>
                 <button type="button" className="close" onClick={handleClose}>
                   <span>&times;</span>
                 </button>
               </div>
               <div className="modal-body">
-                <textarea className="form-control" name="textarea" onChange={handleMsgChange} rows={3}></textarea>
+                <textarea className="contact_seller_textarea" name="textarea" onChange={handleMsgChange} rows={3}></textarea>
               </div>
-              <div className="modal-footer">
-                <button className="btn-dark" onClick={onMsgSent}>
-                  Sent
+              <div className="seller_modal_footer">
+                <button className="seller_contact_send_btn" onClick={onMsgSent}>
+                  ՈՒղարկել
                 </button>
-                <button className="btn-secondary" onClick={handleClose}>
-                  Close
+                <button className="seller_contact_close_btn" onClick={handleClose}>
+                  Փակել
                 </button>
               </div>
             </div>
           </div>
         </div>
       )}
+      <div className="col-lg-12">
+            <ActiveSells params={params} />
+          </div>
     </>
   );
 }

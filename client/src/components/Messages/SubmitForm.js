@@ -21,7 +21,7 @@ function SubmitForm({ chatId }) {
           />
         </div>
         <div>
-          <button type="submit">Send</button>
+          <button type="submit">ՈՒղարկել</button>
         </div>
       </form>
     </div>

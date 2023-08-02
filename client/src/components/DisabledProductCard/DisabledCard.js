@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { RiDeviceRecoverFill } from "react-icons/ri";
 import { activateSell } from "../../services/productData";
-
+import './DisabledCard.css'
 function DisabledCard({ params, history }) {
   const [show, setShow] = useState(false);
 
@@ -29,7 +29,8 @@ function DisabledCard({ params, history }) {
           <small className="text-muted">
             {params.addedAt} - {params.city}
             <span id="enableIcon" onClick={handleShow}>
-              <RiDeviceRecoverFill />
+            <h2 className="text-muted-body">Փոխել կարգավիճակը <RiDeviceRecoverFill /></h2>
+              
             </span>
           </small>
         </div>
@@ -41,16 +42,14 @@ function DisabledCard({ params, history }) {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">
-                  Are you sure you want to make this item active?
+                  Վստա՞հ եք որ ուզում եք ակտիվացնել հայտարարությունը
                 </h5>
                 <button type="button" className="close" onClick={handleClose}>
                   <span>&times;</span>
                 </button>
               </div>
               <div className="modal-body">
-                By clicking <strong>Make Active</strong>, this sell will change
-                its status to <strong>Active</strong>, which means that everyone
-                on this website will see it.
+                Սեղմելով <strong>Ակտիվ</strong>, հայտարարության կարգավիճակը կփոխվի <strong>Ակտիվ</strong>, այն կկարողանան տեսնել բոլոր օգտատերերը
               </div>
               <div className="modal-footer">
                 <button
@@ -58,14 +57,14 @@ function DisabledCard({ params, history }) {
                   className="btn btn-secondary"
                   onClick={handleClose}
                 >
-                  Close
+                  Փակել
                 </button>
                 <button
                   type="button"
                   className="btn btn-success"
                   onClick={handleSubmit}
                 >
-                  Make Active
+                  Ակտիվացնել
                 </button>
               </div>
             </div>

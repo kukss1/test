@@ -117,7 +117,7 @@
     margin-right: 5px;
 }
 
-@media (max-width:480px) {
+@media (max-width:490px) {
     .header_wrapper {
         width: 100vw;
     }

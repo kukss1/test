@@ -35,14 +35,15 @@
     padding-bottom: 15px;
 }
 .categories_btn_wrapper > button {
-    width: 85px;
-    height: 25px;
+    width: 95px;
+    height: 35px;
     background-color: var(--indigo);
     border: none;
     margin-left: 10px;
     border-radius: 5px;
     color: var(--text);
     transition: 0.3s;
+    font-size: 1rem;
 }
 .categories_btn_wrapper > button:hover {
     cursor: pointer;
@@ -57,14 +58,16 @@
     color: var(--text);
 }
 .categories_nav_btn {
-    width: 150px;
-    height: 35px;
+    width: 10vw;
+    height: 50px;
     border: none;
     background-color: var(--indigo);
     margin-left: 10px;
     border-radius: 5px;
+    font-size: 1rem;
     color: var(--text);
     transition: 0.4s;
+    font-weight: bold;
 }
 .categories_nav_btn:hover {
     cursor: pointer;
@@ -74,12 +77,33 @@
 
 /* mobile  */
 
-@media (max-width:480px) {
+@media (max-width:490px) {
+    .dropdown-sort {
+        background-color: var(--headers);
+        display: flex;
+        align-items: flex-end;
+    }
+    .sort {
+        display: flex;
+        align-items: flex-end;
+    }
+    .categories_wrapper {
+        background-color: var(--headers);
+    }
+    .categories_nav_wrapper {
+        width: 100vw;
+    }
+    .categories_nav_links {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 15px;
+
+    }
     .categories_nav_wrapper > h1 {
         font-size: 1rem;
     }
     .categories_nav_btn {
-        font-size: 0.5rem;
+        font-size: 0.8rem;
         width: 45px;
         height: 25px;
         background: none;

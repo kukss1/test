@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: 1fr 6fr;
     background-color: var(--headers);
+    min-height: 75vh;
 }
 .messenger_wrapper_aside {
     height: 100%;
@@ -22,8 +23,28 @@
 }
 
 .chat_connections {
-    /* margin-left: 15px; */
-    border-bottom: 1px solid var(--text);
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    padding: 1vh 1vw;
+    width: 10vw;
+    opacity: 0.7;
+    border: 3px solid var(--lowGrey);
+    border-radius: 5vh;
+    transition: 0.4s;
+}
+.chat_connections a {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.chat_connections a span {
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+    font-weight: bold;
+}
+.chat_connections:hover {
+    opacity: 1;
+    border-color: var(--lowBlue);
 }
 .chat_connections > a:hover {
     color: var(--lowBlue);
@@ -64,17 +85,18 @@
 .message_wrapper {
     background-color: var(--headers);
     min-height: 50vh;
+    max-height: 50vh;
     overflow-y: scroll;
 }
 
 .not-me {
-    margin-left: 25px;
-    margin-bottom: 20px;
-    margin-top: 15px;
+    margin-left: 5vw;
+    margin-bottom: 3vh;
+    margin-top: 2vh;
 
 }
 .not-me > span {
-    font-size: 13px;
+    font-size: 1rem;
     padding: 10px;
     background-color: var(--orange);
     border-radius: 15px;
@@ -84,12 +106,12 @@
 .me {
     display: flex;
     justify-content: flex-end;
-    margin-right: 25px;
-    margin-bottom: 5px;
+    margin-right: 5vw;
+    margin-bottom: 1.5vh;
 }
 
 .me > span {
-    font-size: 13px;
+    font-size: 1rem;
     padding: 10px;
     background-color: var(--lowBlue);
     border-radius: 15px;
@@ -99,6 +121,8 @@
 /* ///////////// */
 
 .message_write_wrapper {
+    display: flex;
+    justify-content: center;
     background-color: var(--headers);
     height: 75px;
     display: flex;
@@ -143,4 +167,29 @@
 }
 .message_btn:hover {
     background-color: var(--lowBlue);
+}
+
+/* mobile  */
+
+@media (max-width:490px) {
+    .messenger_wrapper {
+        width: 100%;
+        overflow-y: hidden;
+    }
+    .chat_connections_wrapper {
+        width: 20vw;
+        margin-left: 5vw;
+    }
+    .chat_connections {
+        border: none;
+    }
+    .chat_connections a{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .chat_connections a span {
+        font-size: 0.9rem;
+    }
 }

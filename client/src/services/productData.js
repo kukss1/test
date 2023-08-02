@@ -29,35 +29,56 @@ export async function getAll(page, category, query) {
   }
 }
 
-export async function getAllMakers(page, make, query) {
+export async function getAllMakers(page, make, searchQuery, made, description, year, title) {
   try {
-    console.log('getAllMakers - page:', page);
-    console.log('getAllMakers - make:', make);
-    console.log('getAllMakers - query:', query);
-    if (query !== "" && query !== undefined) {
-      const response = await axios.get(`${baseUrl}/products`, {
-        params: { page, search: query },
-        withCredentials: true,
-      });
-      return response.data;
-    } else if (make && make !== '') {
-      const response = await axios.get(`${baseUrl}/products/${make}`, {
-        params: { page },
-        withCredentials: true,
-      });
-      return response.data;
-    } else {
-      const response = await axios.get(`${baseUrl}/products`, {
-        params: { page },
-        withCredentials: true,
-      });
-      return response.data;
+    // Создаем объект для хранения условий поиска
+    const searchObj = {};
+
+    if (searchQuery && searchQuery !== '') {
+      const regex = new RegExp(searchQuery, 'i');
+      searchObj.$or = [
+        { title: { $regex: regex } },
+        { make: { $regex: regex } },
+        { description: { $regex: regex } },
+        { made: { $regex: regex } },
+        { year: { $regex: regex } }
+      ];
     }
+
+    // Если передан параметр make, добавляем его в объект с условиями поиска
+    if (make && make !== '') {
+      searchObj.make = { $regex: make, $options: 'i' }; // Используем регистронезависимый поиск для make
+    }
+
+    // Если переданы дополнительные параметры, добавляем их в объект с условиями поиска
+    if (made && made !== '') {
+      searchObj.made = { $regex: made, $options: 'i' };
+    }
+    if (description && description !== '') {
+      searchObj.description = { $regex: description, $options: 'i' };
+    }
+    if (year && year !== '') {
+      searchObj.year = { $regex: year, $options: 'i' };
+    }
+    if (title && title !== '') {
+      searchObj.title = { $regex: title, $options: 'i' };
+    }
+
+    // Выполняем запрос к серверу с использованием объекта с условиями поиска
+    const response = await axios.get(`${baseUrl}/products`, {
+      params: { page, ...searchObj },
+      withCredentials: true,
+    });
+
+    return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
   }
 }
+
+
+
 
 
 

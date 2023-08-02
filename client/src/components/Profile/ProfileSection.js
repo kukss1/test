@@ -19,7 +19,7 @@ function ProfileSection({ params }) {
             <p><FaSellsy /> {params.totalSells}Ընդհանուր վաճառք</p>
           </div>
           <span className="edit_profile_icon">
-            <Link to={`/profile/${params._id}/edit`}>Փոփոխել անձնական տվյալները<GrEdit /></Link>
+            <Link to={`/profile/${params._id}/edit`}>Փոփոխել անձնական տվյալները<GrEdit fill='white'/></Link>
           </span>
         </div>
       </div>

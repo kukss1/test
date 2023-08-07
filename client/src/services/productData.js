@@ -29,9 +29,8 @@ export async function getAll(page, category, query) {
   }
 }
 
-export async function getAllMakers(page, make, searchQuery, made, description, year, title) {
+export async function getAllMakers(page, searchQuery, make, model, year, category) {
   try {
-    // Создаем объект для хранения условий поиска
     const searchObj = {};
 
     if (searchQuery && searchQuery !== '') {
@@ -45,26 +44,22 @@ export async function getAllMakers(page, make, searchQuery, made, description, y
       ];
     }
 
-    // Если передан параметр make, добавляем его в объект с условиями поиска
     if (make && make !== '') {
-      searchObj.make = { $regex: make, $options: 'i' }; // Используем регистронезависимый поиск для make
+      searchObj.make = { $regex: make, $options: 'i' };
     }
 
-    // Если переданы дополнительные параметры, добавляем их в объект с условиями поиска
-    if (made && made !== '') {
-      searchObj.made = { $regex: made, $options: 'i' };
-    }
-    if (description && description !== '') {
-      searchObj.description = { $regex: description, $options: 'i' };
-    }
-    if (year && year !== '') {
-      searchObj.year = { $regex: year, $options: 'i' };
-    }
-    if (title && title !== '') {
-      searchObj.title = { $regex: title, $options: 'i' };
+    if (model && model !== '') {
+      searchObj.model = { $regex: model, $options: 'i' };
     }
 
-    // Выполняем запрос к серверу с использованием объекта с условиями поиска
+    if (year && !isNaN(year)) {
+      searchObj.year = parseInt(year);
+    }
+
+    if (category && category !== '') {
+      searchObj.category = { $regex: `"${category}"`, $options: 'i' };
+    }
+
     const response = await axios.get(`${baseUrl}/products`, {
       params: { page, ...searchObj },
       withCredentials: true,
@@ -76,7 +71,6 @@ export async function getAllMakers(page, make, searchQuery, made, description, y
     throw error;
   }
 }
-
 
 
 

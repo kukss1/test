@@ -15,7 +15,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 125px;
+    height: 25vh;
     background-color: var(--headers);
 }
 
@@ -54,25 +54,77 @@
 
 .categories_nav_wrapper > h1 {
     text-align: center;
-    padding-bottom: 15px;
-    color: var(--text);
+    padding-bottom: 3vh;
+    color: var(--lowGrey);
+}
+.categories_nav_btn_other_wrapper {
+    text-align: center;
+    margin-bottom: 3vh;
+    margin-top: 2vh;
+}
+.categories_nav_btn_other {
+    position: relative;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: var(--lowGrey);
+}
+.categories_nav_btn_other::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2.5px;
+    background-color: var(--lowGrey);
+}
+.categories_nav_btn_other:hover:before {
+    width: 100%;
+    
+}
+.categories_nav_btn_other::before {
+    transition: width 0.35s;
+}
+.categories_nav_btn_other:hover {
+    cursor: pointer;
+    color: var(--lowBlue);
+}
+.categories_nav_links {
+    margin-bottom: 4vh;
 }
 .categories_nav_btn {
-    width: 10vw;
-    height: 50px;
+    position: relative;
+    color: var(--lowGrey);
+    font-size: 1.25rem;
+    background: none;
     border: none;
-    background-color: var(--indigo);
-    margin-left: 10px;
-    border-radius: 5px;
-    font-size: 1rem;
-    color: var(--text);
-    transition: 0.4s;
+    margin-left: 3vw;
     font-weight: bold;
+}
+.categories_nav_btn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2.5px;
+    background-color: var(--lowGrey);
+}
+.categories_nav_btn:hover:before {
+    width: 100%;
+    
+}
+.categories_nav_btn::before {
+    transition: width 0.35s;
 }
 .categories_nav_btn:hover {
     cursor: pointer;
-    background-color: var(--headers);
-    border-bottom: 3px solid var(--indigo);
+    color: var(--lowBlue);
+}
+.categories_nav_btn_other > svg {
+    font-weight: bold;
+    margin-right: 0.5vw;
 }
 
 /* mobile  */
@@ -107,6 +159,21 @@
         width: 45px;
         height: 25px;
         background: none;
+        border: none;
+    }
+    .categories_nav_btn_other_wrapper {
+        background-color: aliceblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .categories_nav_btn_other {
+        font-size: 1rem;
+        width: 15vw;
+        white-space: nowrap;
+        margin-right: 20vw;
+        background: none;
+        border: none;
     }
     .categories_nav_btn:hover {
         border: none;

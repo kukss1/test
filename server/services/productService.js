@@ -33,18 +33,38 @@ async function create(data, userId) {
     return await User.updateOne({ _id: userId }, { $push: { createdSells: product } });
 }
 
+// async function uploadImage(image) {
+//     const uploadResponse = await cloudinary.uploader.upload(image, {
+//         upload_preset: CLOUDINARY_STORAGE,
+//     }, { quality: "auto" });
+
+//     let imageUrl = uploadResponse.url;
+//     let index = (imageUrl.indexOf('upload/')) + 6;
+
+//     let compressedImg = imageUrl
+//         .substring(0, index) +
+//         "/c_fit,q_auto,f_auto,w_800" +
+//         imageUrl.substring(index);
+
+//     return compressedImg;
+// }
 async function uploadImage(image) {
     const uploadResponse = await cloudinary.uploader.upload(image, {
         upload_preset: CLOUDINARY_STORAGE,
-    }, { quality: "auto" });
+        transformation: [
+            { width: 800, height: 600, crop: 'fit' },
+            { quality: 'auto' },
+            { fetch_format: 'webp' },
+        ],
+    });
 
-    let imageUrl = uploadResponse.url;
-    let index = (imageUrl.indexOf('upload/')) + 6;
-
-    let compressedImg = imageUrl
-        .substring(0, index) +
-        "/c_fit,q_auto,f_auto,w_800" +
-        imageUrl.substring(index);
+    const compressedImg = cloudinary.url(uploadResponse.public_id, {
+        width: 800,
+        height: 600,
+        crop: 'fit',
+        quality: 'auto',
+        fetch_format: 'webp',
+    });
 
     return compressedImg;
 }

@@ -37,37 +37,35 @@
 .logIn_wrapper {
     display: flex;
     align-items: center;
+    margin-right: 1.5vw;
 }
 
 .signIn_nav_item {
-    margin-right: 15px;
+    margin-right: 1vw;
     color: var(--text);
-    transition: 0.3s;
+    transition: 0.4s;
     background-color: var(--orange);
-    padding: 1px 5px;
-    border-radius: 4px;
+    padding: 0.4vh 0.8vw;
+    border-radius: 2px;
+    font-weight: 600;
 }
 
 .signIn_nav_item:hover {
-    border-bottom: 2px solid var(--orange);
     background-color: var(--headers);
 }
 
-.signUp_nav-item {
-    display: flex;
-    align-items: center;
-    height: 25px;
+.signUp_nav_item {
+    
     background-color: var(--indigo);
-    padding: 1px 5px;
-    border-radius: 4px;
+    padding: 1vh 1vw;
+    font-weight: 600;
+    border-radius: 2px;
     color: var(--text);
-    transition: 0.3s;
+    transition: 0.4s;
 }
 
-.signUp_nav-item:hover {
+.signUp_nav_item:hover {
     background-color: var(--headers);
-    border-bottom: 3px solid var(--indigo);
-    border-radius: 0;
 }
 
 /* Logined */

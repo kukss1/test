@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Categories.css';
-import { TiSortAlphabetically } from 'react-icons/ti';
+import { TiSortAlphabetically,TiShoppingCart } from 'react-icons/ti';
 
 
 function CategoriesNav() {
@@ -20,8 +20,8 @@ function CategoriesNav() {
             <Link to="/categories/Շարժիչ">
                 <button className="categories_nav_btn">Շարժիչ</button>{' '}
             </Link>
-            <Link to="/categories/Փոխ․ Տուփ">
-                <button className="categories_nav_btn">Փոխ․ Տուփ</button>{' '}
+            <Link to="/categories/Փոխ․Տուփ">
+                <button className="categories_nav_btn">Փոխ․Տուփ</button>{' '}
             </Link>
             <Link to="/categories/Էլեկտրոնիկա">
                 <button className="categories_nav_btn">Էլեկտրոնիկա</button>{' '}
@@ -32,8 +32,10 @@ function CategoriesNav() {
             <Link to="/categories/Աքսեսուարներ">
                 <button className="categories_nav_btn">Աքսեսուարներ</button>{' '}
             </Link>
-            <Link to="/makers">
-                <button className="categories_nav_btn">Makers</button>{' '}
+            </div>
+            <div className='categories_nav_btn_other_wrapper'>
+                <Link to="/makers">
+                <button title='Smart Search' className="categories_nav_btn_other"><TiShoppingCart/>Որոնել Ըստ Մոդելի </button>{' '}
             </Link>
             </div>
         </div>

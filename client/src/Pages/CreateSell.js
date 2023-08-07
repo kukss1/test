@@ -176,7 +176,7 @@ const AddProduct = ({ history }) => {
                 <option>Թափք</option>
                 <option>Ընթացքաին մաս</option>
                 <option>Շարժիչ</option>
-                <option>Փոխ․ Տոււփ</option>
+                <option>Փոխ․Տուփ</option>
                 <option>Էլեկտրոնիկա</option>
                 <option>Ինտերիեր</option>
                 <option>Աքսեսուարներ</option>

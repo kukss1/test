@@ -116,7 +116,7 @@ function Edit({ match, history }) {
                                 <option>Թափք</option>
                                 <option>Ընթացքաին Մաս</option>
                                 <option>Շարժիչ</option>
-                                <option>Փոխ․ Տուփ</option>
+                                <option>Փոխ․Տուփ</option>
                                 <option>Էլեկտրոնիկա</option>
                                 <option>Ինտերիեր</option>
                                 <option>Աքսեսուարներ</option>

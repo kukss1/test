@@ -12,15 +12,6 @@ const productSchema = new mongoose.Schema({
   category: {
     type: String,
     required: [true, 'Category is required'],
-    enum: [
-      'Թափք',
-      'Ընթացքաին մաս',
-      'Շարժիչ',
-      'Փոխ․ Տուփ',
-      'Էլեկտրոնիկա',
-      'Ինտերիեր',
-      'Աքսեսուարներ',
-    ],
   },
   description: {
     type: String,

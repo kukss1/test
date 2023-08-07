@@ -24,10 +24,6 @@ function Header() {
           </NavLink>
         </div>
         <div className="header_container_rightSide">
-          {/* <div className="mr-auto">
-                        <a href="#features">Features</a>
-                        <a href="#pricing">Pricing</a>
-                    </div>  */}
           {userData ? (
             <nav className="logged_in_nav_wrapper">
               <NavLink className="nav_item" to="/add-product">
@@ -79,7 +75,7 @@ function Header() {
                 Մուտք
               </NavLink>
               <NavLink
-                className="signUp_nav-item"
+                className="signUp_nav_item"
                 id="nav-sign-up"
                 to="/auth/register"
               >

@@ -9,8 +9,11 @@ const productService = require('../services/productService');
 
 
 
+
 router.get('/', async (req, res) => {
-  const { page, search } = req.query;
+  const { page, search, make, model, year,category } = req.query;
+  console.log(req.query);
+
   try {
     let products;
     if (search !== '' && search !== undefined) {
@@ -21,16 +24,43 @@ router.get('/', async (req, res) => {
           x.title.toLowerCase().includes(search.toLowerCase()) ||
           x.make.toLowerCase().includes(search.toLowerCase())
       );
-      res.status(200).json({ products: products, pages: products.pages });
     } else {
-      products = await Product.paginate({}, { page: parseInt(page) || 1, limit: 5 });
-      products.docs = products.docs.filter((x) => x.active == true);
-      res.status(200).json({ products: products.docs, pages: products.pages });
+      const searchParams = {};
+      if (make) {
+        searchParams.make = make;
+      }
+      if (model) {
+        searchParams.model = model;
+      }
+      if (year) {
+        searchParams.year = parseInt(year);
+      }
+      if (category) {
+        searchParams.category = "${category}"; // Добавляем параметр "category" в поисковые параметры
+      }
+
+      products = await Product.find(searchParams);
+      products = products.filter((x) => x.active == true);
     }
+
+    // Pagination
+    const pageSize = 5; // Количество продуктов на одной странице
+    const totalCount = products.length; // Общее количество продуктов
+    const totalPages = Math.ceil(totalCount / pageSize); // Общее количество страниц
+    const currentPage = parseInt(page) || 1; // Текущая страница
+    const startIndex = (currentPage - 1) * pageSize; // Начальный индекс продукта на текущей странице
+    const endIndex = Math.min(startIndex + pageSize - 1, totalCount - 1); // Конечный индекс продукта на текущей странице
+
+    const paginatedProducts = products.slice(startIndex, endIndex + 1);
+
+    res.status(200).json({ products: paginatedProducts, pages: totalPages });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
+
 });
+
+
 
 router.get('/:category', async (req, res) => {
   const { page } = req.query;
@@ -45,58 +75,41 @@ router.get('/:category', async (req, res) => {
   }
 });
 
-router.get('/:make', async (req, res) => {
-  const { page, search, make, title, description, year } = req.query;
+router.get('/', async (req, res) => {
+  const { make, model, year } = req.query;
 
-  // Создаем пустой объект для фильтрации запроса
-  const query = {};
+  // Создаем объект, в котором будем хранить параметры для поиска
+  const searchParams = {};
 
-  // Добавляем фильтрацию по производителю, если задан параметр 'make'
+  // Проверяем, есть ли параметр "make" в запросе и добавляем его в объект поиска
   if (make) {
-    const regex = new RegExp(make, 'i');
-    query.make = { $regex: regex };
+    searchParams.make = make;
   }
 
-  // Добавляем фильтрацию по поисковому запросу, если задан параметр 'search'
-  if (search) {
-    const regex = new RegExp(search, 'i'); // 'i' означает регистронезависимый поиск
-    query.$or = [
-      { title: { $regex: regex } },
-      { description: { $regex: regex } },
-      { year: { $regex: regex } },
-      { made: { $regex: regex } },
-    ];
+  // Проверяем, есть ли параметр "model" в запросе и добавляем его в объект поиска
+  if (model) {
+    searchParams.model = model;
+  }
+  if (category) {
+    searchParams.category = category;
   }
 
-  // Добавляем фильтрацию по названию, если задан параметр 'title'
-  if (title) {
-    const regex = new RegExp(title, 'i');
-    query.title = { $regex: regex };
-  }
-
-  // Добавляем фильтрацию по описанию, если задан параметр 'description'
-  if (description) {
-    const regex = new RegExp(description, 'i');
-    query.description = { $regex: regex };
-  }
-
-  // Добавляем фильтрацию по году, если задан параметр 'year'
+  // Проверяем, есть ли параметр "year" в запросе и добавляем его в объект поиска
   if (year) {
-    const regex = new RegExp(year, 'i');
-    query.year = { $regex: regex };
+    searchParams.year = parseInt(year); // Преобразуем значение года в число перед добавлением
   }
 
-  try {
-    let products = await Product.paginate(query, { page: parseInt(page) || 1, limit: 10 });
-    console.log("Products found:", products.docs);
-    res.status(200).json({ products: products.docs, pages: products.pages });
-  } catch (error) {
-    console.error("Error fetching products:", error.message);
-    res.status(500).json({ message: error.message });
-  }
+  // Выполняем поиск в базе данных на основе объекта searchParams
+  db.collection('products')
+    .find(searchParams)
+    .toArray()
+    .then((docs) => {
+      res.status(200).json(docs);
+    })
+    .catch(() => {
+      res.status(500).json({ error: 'Something went wrong' });
+    });
 });
-
-
 
 
 

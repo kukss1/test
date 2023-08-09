@@ -5,6 +5,7 @@ import { getAllMakers } from "../services/productData";
 import "../components/Makers/Makers.css";
 
 const Makers = ({ match }) => {
+  let currentCategory = match.params.category;
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -92,29 +93,32 @@ const Makers = ({ match }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log("Category in getAllMakers:", category);
+      
         const res = await getAllMakers(
           page,
           searchQuery,
           selectedMake,
           selectedModel,
+          currentCategory,
           year.toString(),
-          title,
-          category
+          title
         );
         setProducts((prevProducts) => [...prevProducts, ...res.products]);
         setLoading(false);
         setPage((prevPage) =>
           res.products.length > 0 ? prevPage + 1 : prevPage
         );
+        
       } catch (err) {
         console.log(err);
       }
     };
-
+  
     setLoading(true);
     fetchData();
-  }, [category, page, searchQuery, selectedMake, selectedModel, year, title]);
+  }, [currentCategory, page, searchQuery, selectedMake, selectedModel, year, title]);
+
+
 
   return (
     <div>

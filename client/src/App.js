@@ -23,7 +23,7 @@ function App() {
             <Route path="/" exact component={Categories} />
             <Route path="/categories/:category" exact component={Categories} />
             <Route path="/makers" exact component={Makers} />
-            <Route path="/makers/:make" exact component={Makers} />
+            <Route path="/makers/:category" exact component={Makers} />
             <Route path="/categories/:category/:id/details" component={Details} />
             <Route path="/categories/:category/:id/edit" component={Edit} />
             <Route path="/auth/login" exact component={Login} />

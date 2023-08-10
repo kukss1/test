@@ -47,7 +47,7 @@ io.on("input", async function (data) {
 });
 
 app.use(routes);
-http.listen(PORT, () =>
-  console.log(`Server is running at http://localhost:${PORT}...`)
-);
-// app.listen(PORT, () => console.log(`Server is listening on port ${PORT}...`));
+// http.listen(PORT, () =>
+//   console.log(`Server is running at http://localhost:${PORT}...`)
+// );
+app.listen(PORT, () => console.log(`Server is listening on port ${PORT}...`));

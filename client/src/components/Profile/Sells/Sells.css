@@ -5,3 +5,16 @@
 .profile_sells {
     display: flex;
 }
+
+@media screen and (max-width: 830px) {
+    .profile_sells {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media screen and (max-width: 498px) {
+    .profile_sells {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}

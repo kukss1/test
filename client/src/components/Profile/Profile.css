@@ -1,163 +1,206 @@
-.profile_head {
-    background-color: var(--night);
-}
+/* Добавьте следующие стили в ваш файл CSS */
 
-.seller_avatar_wrapper {
+.profile_wrapper {
     display: flex;
-    justify-content: center;
-    margin-bottom: 15px;
-}
-.seller_profile_avatar_wrapper {
-    display: flex;
-    justify-content: center;
-}
-
-.seller_profile_avatar {
-    width: 100vw;
-    height: 350px;
-}
-
-.seller_profile_info {
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    padding: 0 15px;
+    max-width: 800px;
+  }
+  
+  .profile_avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .seller_list_menu {
     display: flex;
     justify-content: space-around;
-    background-color: var(--headers);
-    height: 55px;
-}
-.seller_profile_info > p {
-    display: flex;
-    align-items: center;
-    color: var(--text);
-    border-radius: 15px;
-    padding: 5px;
-    opacity: 0.8;
-}
-.edit_profile_icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--headers);
-    padding-left: 50px;
-    height: 35px;
-    color: var(--orange);
-}
-.edit_profile_icon > a {
-    color: var(--lowBlue);
-    font-size: 1.2rem;
-    font-weight: 400;
-}
-.edit_profile_icon svg {
-    margin-left: 15px;
-}
-
-.seller_list_menu {
-    display: flex;
-    align-items: center;
-    padding-left: 35px;
-    height: 50px;
-    background-color: var(--headers);
-}
-.seller_list_menu > button {
-    background: none;
+    margin-bottom: 20px;
+  }
+  
+  .seller_list_menu button {
+    padding: 8px 12px;
     border: none;
-    height: 35px;
-    width: 125px;
-    color: var(--text);
-    margin: 15px;
-    background-color: var(--lowBlue);
-    border-radius: 3px;
-    transition: 0.3s;
-}
-
-.seller_list_menu > button:hover {
-    cursor: pointer;
-    background-color: var(--indigo);
-}
-
-.profile_active_sales {
-    margin-bottom: 15px;
-}
-/* edit profile  */
-
-.edit_profile_form {
-    background-color: var(--dirtyWhite);
-}
-
-.edit_profile_avatar {
-    height: 30vh;
-}
-.edit_profile_input {
-    padding-left: 5vw;
-    background-color: rgba(94, 92, 92, 15%);
-}
-.edit_input {
-    background: none;
-    border: none;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-    border-bottom: 1px solid var(--headers);
-}
-.edit_input_btn {
-    background-color: rgba(94, 92, 92, 15%);
-}
-.edit_input_btn span svg {
-    font-size: 2rem;
-    fill: var(--indigo);
-    padding-left: 5vw;
-}
-
-
-/* Seller Profile  */
-
-.profile_row {
-    padding-left: 3vw;
-}
-.modal_contact_seller {
-    padding-left: 5vw;
-}
-.contact_seller_textarea {
-    background: none;
-    border: none;
-    border-bottom: 1px solid var(--headers);
-    width: 15vw;
-}
-.seller_modal_footer {
-    padding-top: 2vh;
-}
-.seller_modal_footer button {
-    width: 8vw;
-    height: 3vh;
-    margin-left: 1vw;
     border-radius: 5px;
-    background: none;
-    border: none;
-    background-color: var(--orange);
-    color: var(--text);
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-left: 2vw;
     
-}
-.seller_profile_body p {
-    border-bottom: 1px solid var(--text);
-}
-.seller_profile_body {
-    padding-bottom: 2vh;
-}
-/* mobile  */
+  }
+  
+  .seller_list_menu button:hover {
+    background-color: #2980b9;
+  }
+  
+  .profile_active_sales,
+  .archived_sells_wrapper,
+  .wishlist_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .active_sell,
+  .archived_sell,
+  .wishlist_item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    width: calc(50% - 10px);
+    text-align: center;
+  }
+  
+  .active_sell img,
+  .archived_sell img,
+  .wishlist_item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  .edit_profile_icon a {
+    color: var(--header);
+  }
+  .edit_profile_icon a svg {
+    margin-left: 2vw;
+  }
+  
+  /* Оптимизация для мобильных устройств */
+  
+  @media screen and (max-width: 768px) {
+    .profile_avatar {
+      width: 100px;
+      height: 100px;
+    }
+    .seller_profile_avatar {
+        max-width: 350px;
+    }
+  
+    .seller_list_menu {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .seller_list_menu button {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+  
+    .profile_active_sales,
+    .archived_sells_wrapper,
+    .wishlist_wrapper {
+      flex-direction: column;
+    }
+  
+    .active_sell,
+    .archived_sell,
+    .wishlist_item {
+      width: 100%;
+    }
+  }
+  
 
-@media (max-width:490px) {
-    .seller_profile_info {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+  
+  /* Добавьте следующие стили в ваш файл CSS */
+
+#profile-head {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .edit_profile_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    padding: 0 15px;
+    max-width: 800px;
+  }
+  
+  .edit_profile_form {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .edit_profile_avatar {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .custom-file-upload {
+    cursor: pointer;
+  }
+  
+  .edit_profile_input {
+    margin-top: 10px;
+  }
+  
+  .edit_input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .edit_input_btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .edit_input_btn span {
+    font-size: 24px;
+    color: #3498db;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .edit_input_btn span:hover {
+    color: #2980b9;
+  }
+  
+  /* Оптимизация для мобильных устройств */
+  
+  @media screen and (max-width: 768px) {
+    .edit_profile_form {
+      padding: 15px;
     }
-    .profile_svg {
-        fill: wheat;
+  
+    .edit_profile_avatar {
+      width: 80px;
+      height: 80px;
     }
-    .profile_sells {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+  
+    .edit_input {
+      padding: 6px;
+      font-size: 14px;
     }
-    .seller_modal_footer button {
-        width: 18vw;
+  
+    .edit_input_btn span {
+      font-size: 20px;
     }
-    .close {
-        width: 10vw;
-    }
-    }
+  }
+  
+  /* Дополнительные стили для желаемого оформления могут быть добавлены здесь */
+  
+  /* Добавьте остальные стили вашего компонента EditProfile */
+  

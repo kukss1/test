@@ -29,17 +29,18 @@ export async function getAll(page, category, query) {
   }
 }
 
-export async function getAllMakers(
+export async function getAllMakers({
   page,
   searchQuery,
   make,
   model,
   year,
-  category
-) {
+  category,
+  title,
+}) {
   try {
     const searchObj = {};
-    console.log(category)
+    console.log(category);
     if (searchQuery && searchQuery !== "") {
       const regex = new RegExp(searchQuery, "i");
       searchObj.$or = [
@@ -48,6 +49,7 @@ export async function getAllMakers(
         { description: { $regex: regex } },
         { made: { $regex: regex } },
         { year: { $regex: regex } },
+        { category: { $regex: regex } },
       ];
     }
 
@@ -65,14 +67,16 @@ export async function getAllMakers(
       searchObj.year = parseInt(year);
     }
 
-    if (category && category !== "") {
+    if (category) {
       searchObj.category = category;
     }
-    const response = await axios.get(`${baseUrl}/products/${category}`, {
-      params: { page, ...searchObj}, 
+    if (title) {
+      searchObj.title = title;
+    }
+    const response = await axios.get(`${baseUrl}/products/`, {
+      params: { page, ...searchObj },
       withCredentials: true,
     });
-    
 
     return response.data;
   } catch (error) {

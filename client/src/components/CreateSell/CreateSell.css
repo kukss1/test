@@ -1,70 +1,107 @@
-.heading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--headers);
-    font-family: serif;
-    height: 60px;
-    border-bottom: 2px solid var(--dirtyWhite);
-}
-
+/* Общие стили */
 .create_sell_wrapper {
-    background-color: var(--headers);
+    padding: 20px;
+    background-color: #f8f8f8;
+  }
+  
+  .heading {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .product_input_form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .input_product {
+    margin-bottom: 20px;
+  }
+  
+  .input_product label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  .input_product input,
+  .input_product select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .add_product_btn {
     display: flex;
-    flex-direction: column;
-    height: 100vh;
-    justify-content: flex-start;
-}
-
-.product_input_form {
-   margin:50px 25px;
-
-}
-
-.input_product {
-    display: flex;
-    flex-direction: column;
-    width: 75vw;
-    margin: 5px;
-    padding:5px 0;
-}
-.input_product label {
-    color: var(--headers);
-}
-.input_product input {
-    height: 35px;
-    background: none;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .add_product_btn {
+    padding: 10px 20px;
+    font-size: 18px;
     border: none;
-    background-color: var(--text);
-}
-.input_product_btn {
-    color: var(--lowGrey);
-    padding: 5px;
-}
-.input_product_btn > input {
-    margin:0 15px;
-    border: none;
-    background: none;
-}
-.add_product_btn {
-    margin-top: 15px;
-    margin-left: 15px;
-    height: 55px;
-    width: 125px;
-    border-radius: 15px;
-    border: none;
-    background: none;
-    background-color: var(--grey);
-    border: 1px solid var(--lowGrey);
-    color: var(--lowGrey);
-    font-weight: 600;
-    transition: 0.3s;
-}
-.add_product_btn:hover {
+    border-radius: 5px;
     cursor: pointer;
-    background-color: var(--lowGrey);
-    color: var(--grey);
-    border: 3px solid var(--gray);
-}
-
-
+    background-color: var(--lowBlue);
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add_product_btn:hover {
+    background-color: #e68a00;
+  }
+  
+  /* Дополнительные стили для мобильных устройств */
+  @media (max-width: 576px) {
+    .product_input_form {
+      padding: 15px;
+    }
+  
+    .input_product {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .input_product label {
+      margin-bottom: 5px;
+    }
+  
+    .input_product input,
+    .input_product select {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Дополнительные стили для больших экранов */
+  @media (min-width: 992px) {
+    .create_sell_wrapper {
+      padding: 40px;
+    }
+  
+    .product_input_form {
+      max-width: 800px;
+    }
+  
+    .input_product {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+  
+    .input_product_btn {
+      margin-top: 40px;
+    }
+  }
+  

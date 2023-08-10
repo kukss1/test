@@ -5,14 +5,10 @@ import { getAllMakers } from "../services/productData";
 import "../components/Makers/Makers.css";
 
 const Makers = ({ match }) => {
-  let currentCategory = match.params.category;
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [description, setDescription] = useState("");
   const [year, setYear] = useState("");
-  const [title, setTitle] = useState("");
   const [makes, setMakes] = useState([]);
   const [models, setModels] = useState([]);
   const [selectedMake, setSelectedMake] = useState("");
@@ -58,24 +54,12 @@ const Makers = ({ match }) => {
     fetchModelsForMake(selectedMake);
   };
 
-  const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
   const handleMadeChange = (event) => {
     setSelectedModel(event.target.value);
   };
 
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
-  };
-
   const handleYearChange = (event) => {
     setYear(event.target.value);
-  };
-
-  const handleTitleChange = (event) => {
-    setTitle(event.target.value);
   };
 
   const handleCategoryChange = (event) => {
@@ -93,38 +77,32 @@ const Makers = ({ match }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-      
-        const res = await getAllMakers(
+        const res = await getAllMakers({
           page,
-          searchQuery,
-          selectedMake,
-          selectedModel,
-          currentCategory,
-          year.toString(),
-          title
-        );
+          make: selectedMake,
+          model: selectedModel,
+          year: year.toString(),
+          category,
+        });
         setProducts((prevProducts) => [...prevProducts, ...res.products]);
         setLoading(false);
         setPage((prevPage) =>
           res.products.length > 0 ? prevPage + 1 : prevPage
         );
-        
       } catch (err) {
         console.log(err);
       }
     };
-  
+
     setLoading(true);
     fetchData();
-  }, [currentCategory, page, searchQuery, selectedMake, selectedModel, year, title]);
-
-
+  }, [category, page, selectedMake, selectedModel, year]);
 
   return (
     <div>
-    <h1 className="makers_header">Գտնել ըստ մոդելի</h1>
+      <h1 className="makers_header">Գտնել ըստ մոդելի</h1>
       <form onSubmit={handleSearchSubmit} className="makers_form_wrapper">
-              <select value={selectedMake} onChange={handleMakeChange}>
+        <select value={selectedMake} onChange={handleMakeChange}>
           <option value="">Արտադրող ընկերություն</option>
           {makes.map((make) => (
             <option key={make} value={make}>
@@ -144,59 +122,37 @@ const Makers = ({ match }) => {
             </option>
           ))}
         </select>
-               <select value={category} onChange={handleCategoryChange}>
-          <option>Կատեգորիա</option>
-          <option>Թափք</option>
-          <option>Ընթացքաին մաս</option>
-          <option>Շարժիչ</option>
-          <option>Փոխ․Տուփ</option>
-          <option>Էլեկտրոնիկա</option>
-          <option>Ինտերիեր</option>
-          <option>Աքսեսուարներ</option>
+        <select value={category} onChange={handleCategoryChange}>
+          <option value={"Կատեգորիա"}>Կատեգորիա</option>
+          <option value={"Թափք"}>Թափք</option>
+          <option value={"Ընթացքաին մաս"}>Ընթացքաին մաս</option>
+          <option value={"Շարժիչ"}>Շարժիչ</option>
+          <option value={"Փոխ․Տուփ"}>Փոխ․Տուփ</option>
+          <option value={"Էլեկտրոնիկա"}>Էլեկտրոնիկա</option>
+          <option value={"Ինտերիեր"}>Ինտերիեր</option>
+          <option value={"Աքսեսուարներ"}>Աքսեսուարներ</option>
         </select>
-                <input
+        <input
           type="number"
           value={year}
           onChange={handleYearChange}
-          placeholder="Введите год..."
+          placeholder="Տարեթիվ"
         />
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={handleSearchChange}
-          placeholder="Введите ключевые слова для поиска..."
-        />
-
-        <input
-          type="text"
-          value={description}
-          onChange={handleDescriptionChange}
-          placeholder="Введите описание..."
-        />
-
- 
-        <input
-          type="text"
-          value={title}
-          onChange={handleTitleChange}
-          placeholder="Введите название..."
-        />
+        <div></div>
         <button type="submit">Գտնել</button>
-
       </form>
       <div className="makers_link">
         <a href="/makers/all">Տեսնել բոլոր հայտարարությունները</a>
       </div>
-      
+
       <div className="makers_card">
-         {products.map((x) => (
-        <div className="product_card_container" key={x._id.toString()}>
-          <ProductCard params={x} />
-        </div>
-      ))}
-      {loading && <div>Loading...</div>}
+        {products.map((x) => (
+          <div className="product_card_container" key={x._id.toString()}>
+            <ProductCard params={x} />
+          </div>
+        ))}
+        {loading && <div>Loading...</div>}
       </div>
-     
     </div>
   );
 };

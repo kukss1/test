@@ -1,123 +1,50 @@
-.makers_form_wrapper {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 21vh;
-    background-color: var(--headers);
-}
+/* Добавьте следующие стили в ваш файл CSS */
+
 .makers_header {
-    text-align: center;
-    background-color: var(--headers);
-    color: var(--text);
-    padding-top: 1vh;
-}
-.makers_form_wrapper input {
-    height: 3vh;
-    margin-left: 1vw;
-    background: none;
-    border: none;
-    color: var(--text);
-    font-size: 1rem;
-    border-bottom: 2px solid var(--lowGrey);
-}
-.makers_form_wrapper select {
-    margin-left: 1vw;
-    height: 4vh;
-    background: none;
-    color: var(--text);
-    font-size: 1rem;
-}
-
-.makers_form_wrapper select option {
-    background: none;
-    border: none;
-    background-color: var(--headers);
-}
-
-.makers_form_wrapper button {
-    margin-left: 1vw;
-    width: 6vw;
-    height: 4vh;
-    font-size: 1rem;
-    background: none;
-    border: none;
-    color: var(--text);
-    font-weight: 600;
-    background-color: var(--lowBlue);
-    box-shadow: 0px 1px 0px var(--lowBlue);
-}
-.makers_form_wrapper button:hover {
-    box-shadow: 0px -1px 0px var(--lowBlue);
-    cursor: pointer;
-}
-
-.makers_card {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-.makers_link {
-    height: 3vh;
-    background-color: var(--headers);
-    padding-bottom: 2vh;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .makers_form_wrapper {
     display: flex;
-    justify-content: center;
-}
-.makers_link > a {
-    position: relative;
-    font-size: 1.25rem;
-    color: var(--lowGrey);
-}
-.makers_link a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0;
-    height: 2.5px;
-    background-color: var(--lowGrey);
-}
-.makers_link a:hover:before {
-    width: 100%;
-    
-}
-.makers_link a::before {
-    transition: width 0.35s;
-}
-.makers_link a:hover {
-    cursor: pointer;
-    color: var(--lowBlue);
-}
-
-@media (max-width:490px) {
-    .makers_form_wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        width: 100%;
-        overflow-x: hidden;
-    }
-    .makers_form_wrapper input {
-        width: 25vw;
-        margin-left: 2vw;
-    }
-    .makers_form_wrapper select {
-        width: 25vw;
-        margin-left: 2vw;
-    }
-    .makers_form_wrapper button {
-        width:17vw ;
-    }
-    .makers_link {
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        padding-top: 3vh;
-        border-top: 2px solid var(--lowGrey);
-    }
-    .makers_link a {
-        text-decoration: underline;
-    }
-    .makers_card {
-        display: grid; 
-        grid-template-columns: 1fr 1fr;
-    }
-}
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  .makers_form_wrapper select,
+  .makers_form_wrapper input,
+  .makers_form_wrapper button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .makers_link {
+    margin-top: 20px;
+  }
+  
+  .makers_link a {
+    text-decoration: none;
+    color: #3498db;
+  }
+  
+  .makers_card {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .product_card_container {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  .loading {
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+  }
+  

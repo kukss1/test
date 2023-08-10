@@ -41,7 +41,7 @@ function Register({ history }) {
     return (
         <>
             <SimpleSider />
-            <div className="auth-form">
+            <div className="reg_auth-form">
                 <h1 className="auth_heading">Sign Up</h1>
                 <form className="login_form_wrapper" onSubmit={handleSubmitReg}>
                     {alertShow &&
@@ -61,7 +61,7 @@ function Register({ history }) {
                         </div>
                         <div className="login_input_wrapper">
                             <label htmlFor="gender">Gender</label>
-                            <select defaultValue="not specified" name="gender" id="gender" onChange={handleChanges}>
+                            <select className='gender_select' defaultValue="not specified" name="gender" id="gender" onChange={handleChanges}>
                                 <option value="male">male</option>
                                 <option value="female">female</option>
                                 <option value="not specified">not specified</option>

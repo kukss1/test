@@ -14,7 +14,6 @@ import "../components/Siders/SearchSider.css";
 import "../components/Categories/Categories.css";
 import "../components/ProductCard/ProductCard.css";
 
-
 function Categories({ match }) {
   let currentCategory = match.params.category;
   const [products, setProduct] = useState([]);
@@ -23,13 +22,11 @@ function Categories({ match }) {
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState("oldest");
 
-
-
   useEffect(() => {
     setPage(1);
     setLoading(true);
     setQuery("");
-    getAll(1, currentCategory,"")
+    getAll(1, currentCategory, "")
       .then((res) => {
         setProduct(res.products);
         setLoading(false);
@@ -38,7 +35,7 @@ function Categories({ match }) {
       })
       .catch((err) => console.log(err));
   }, [currentCategory, setProduct]);
-  
+
   useEffect(() => {
     setPage(1);
     setLoading(true);
@@ -54,26 +51,11 @@ function Categories({ match }) {
       })
       .catch((err) => console.log(err));
   }, [query, currentCategory]);
-  
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setQuery(e.target.value);
-  };
+
   return (
     <>
-      <div className="search_Wrapper">
-        <input
-          className="col-lg-6"
-          type="text"
-          placeholder="Search..."
-          name="search"
-          value={query}
-          onChange={handleSearch}
-        />
-      </div>
       <div className="categories_header">
         <CategoriesNav />
-        
       </div>
       <div className="categories_wrapper">
         <div className="dropdown-sort">
@@ -82,6 +64,7 @@ function Categories({ match }) {
           </h2>
           <div className="categories_btn_wrapper">
             <button
+              className="categories_btn"
               onClick={() => {
                 setSort("oldest");
               }}
@@ -89,6 +72,7 @@ function Categories({ match }) {
               Հին <BiDownArrowAlt />
             </button>
             <button
+              className="categories_btn"
               onClick={() => {
                 setSort("newest");
               }}
@@ -96,6 +80,7 @@ function Categories({ match }) {
               Նոր <BiUpArrowAlt />
             </button>
             <button
+              className="categories_btn"
               onClick={() => {
                 setSort("lowerPrice");
               }}
@@ -103,6 +88,7 @@ function Categories({ match }) {
               Գին <BiSortDown />
             </button>
             <button
+              className="categories_btn"
               onClick={() => {
                 setSort("biggerPrice");
               }}
@@ -113,38 +99,42 @@ function Categories({ match }) {
         </div>
         {!loading ? (
           <InfiniteScroll
-  dataLength={products.length}
-  next={() => {
-    if (query === "") {
-      getAll(page, currentCategory).then((res) => {
-        if (res.products.length > 0) { // Добавлено условие проверки наличия новых товаров
-          setProduct([...products, ...res.products]);
-          setPage(page + 1);
-        }
-      });
-    }
-  }}
-  hasMore={products.length > 0} // Используется условие наличия товаров для hasMore
-  className="row"
->
+            dataLength={products.length}
+            next={() => {
+              if (query === "") {
+                getAll(page, currentCategory).then((res) => {
+                  if (res.products.length > 0) {
+                    // Добавлено условие проверки наличия новых товаров
+                    setProduct([...products, ...res.products]);
+                    setPage(page + 1);
+                  }
+                });
+              }
+            }}
+            hasMore={products.length > 0} // Используется условие наличия товаров для hasMore
+            className="row"
+          >
             {products
               .sort((a, b) => {
-                if (sort === "oldest") {
-                  return a.addedAt.localeCompare(b.addedAt);
-                }
-                if (sort === "newest") {
-                  return b.addedAt.localeCompare(a.addedAt);
-                }
-                if (sort === "lowerPrice") {
-                  return b.price - a.price;
-                }
-                if (sort === "biggerPrice") {
-                  return a.price - b.price;
+                switch (sort) {
+                  case "oldest":
+                    return a.addedAt.localeCompare(b.addedAt);
+                  case "newest":
+                    return b.addedAt.localeCompare(a.addedAt);
+                  case "lowerPrice":
+                    return b.price - a.price;
+                  case "biggerPrice":
+                    return a.price - b.price;
+                  default:
+                    return 0;
                 }
               })
-              .map((x) => (
-                <div className="product_card_container" key={x._id.toString()}>
-                  <ProductCard params={x} />
+              .map((product) => (
+                <div
+                  className="product_card_container"
+                  key={product._id.toString()}
+                >
+                  <ProductCard params={product} />
                 </div>
               ))}
           </InfiniteScroll>

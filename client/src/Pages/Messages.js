@@ -3,6 +3,18 @@ import { getUserConversations, sendMessage } from "../services/messagesData";
 import { Link } from "react-router-dom";
 
 import "../components/Messages/Messenger.css";
+
+function DismissibleAlert({ onClose, children }) {
+  return (
+    <div className="dismissible-alert">
+      {children}
+      <button className="close-button" onClick={onClose}>
+        Закрыть
+      </button>
+    </div>
+  );
+}
+
 function Messages({ match }) {
   let chatId = match.params.id;
   const [conversations, setConversations] = useState([]);
@@ -35,10 +47,13 @@ function Messages({ match }) {
         setConversations(res);
       })
       .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
     if (isSelected) {
       setSelected(conversations.find((x) => x.chats._id === chatId));
     }
-  }, [isSelected, chatId, setSelected, conversations]);
+  }, [isSelected, chatId, conversations]);
 
   function handleMsgSubmit(e) {
     e.preventDefault();
@@ -47,10 +62,16 @@ function Messages({ match }) {
         setAlert("Message sent!");
         setAlertShow(true);
         setMessage("");
-        setSelected(
-          selected,
-          selected.chats.conversation.push({ message, senderId: res.sender })
-        );
+        setSelected((prevSelected) => ({
+          ...prevSelected,
+          chats: {
+            ...prevSelected.chats,
+            conversation: [
+              ...prevSelected.chats.conversation,
+              { message, senderId: res.sender },
+            ],
+          },
+        }));
         setTimeout(() => {
           setAlert(null);
           setAlertShow(false);
@@ -60,9 +81,9 @@ function Messages({ match }) {
   }
 
   return (
-    <>
-      <h3 className="messages_header">Նամակներ</h3>
-      <div className="messenger_wrapper">
+    <div className="messages-container">
+      <h3 className="messages-header">Նամակներ</h3>
+      <div className="messenger-wrapper">
         <aside className="messenger_wrapper_aside">
           {conversations.length >= 1 ? (
             <div className="chat_connections_wrapper">
@@ -72,16 +93,20 @@ function Messages({ match }) {
                     onClick={() => setIsSelected(true)}
                     to={`/messages/${x.chats._id}`}
                   >
-                    {x.isBuyer ? (
-                      <>
-                        <img src={x.chats.seller.avatar} alt="user-avatar" />{" "}
-                        <span>{x.chats.seller.name}</span>
-                      </>
+                    {x.chats && x.isBuyer !== undefined ? (
+                      x.isBuyer ? (
+                        <>
+                          <img src={x.chats.seller.avatar} alt="user-avatar" />{" "}
+                          <span>{x.chats.seller.name}</span>
+                        </>
+                      ) : (
+                        <>
+                          <img src={x.chats.buyer.avatar} alt="user-avatar" />{" "}
+                          <span>{x.chats.buyer.name}</span>
+                        </>
+                      )
                     ) : (
-                      <>
-                        <img src={x.chats.buyer.avatar} alt="user-avatar" />{" "}
-                        <span>{x.chats.buyer.name}</span>
-                      </>
+                      <span>Missing data</span> // Подставьте здесь какое-то значение по умолчанию или обработку отсутствующих данных
                     )}
                   </Link>
                 </div>
@@ -95,22 +120,32 @@ function Messages({ match }) {
           {isSelected && (
             <>
               <div className="chat_member_wrapper">
-                {selected.isBuyer ? (
-                  <Link to={`/profile/${selected.chats.seller._id}`}>
-                    {/* <img src={selected.chats.seller.avatar} alt="user-avatar" /> */}
-                    <span>{selected.chats.seller.name}</span>
-                  </Link>
-                ) : (
-                  <Link to={`/profile/${selected.chats.buyer._id}`}>
-                    {/* <img src={selected.chats.buyer.avatar} alt="user-avatar" /> */}
-                    <span>{selected.chats.buyer.name}</span>
-                  </Link>
-                )}
+                <Link
+                  to={`/profile/${
+                    selected.isBuyer
+                      ? selected.chats.seller._id
+                      : selected.chats.buyer._id
+                  }`}
+                >
+                  {/* <img
+                    src={
+                      selected.isBuyer
+                        ? selected.chats.seller.avatar
+                        : selected.chats.buyer.avatar
+                    }
+                    alt="user-avatar"
+                  /> */}
+                  <span>
+                    {selected.isBuyer
+                      ? selected.chats.seller.name
+                      : selected.chats.buyer.name}
+                  </span>
+                </Link>
               </div>
               {alertShow && (
-                <div onClose={() => setAlertShow(false)} dismissible>
+                <DismissibleAlert onClose={() => setAlertShow(false)}>
                   <p>{alert}</p>
-                </div>
+                </DismissibleAlert>
               )}
               <div className="message_wrapper">
                 {selected.chats.conversation.map((x) => (
@@ -148,7 +183,7 @@ function Messages({ match }) {
           )}
         </article>
       </div>
-    </>
+    </div>
   );
 }
 

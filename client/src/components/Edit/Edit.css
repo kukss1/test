@@ -1,58 +1,108 @@
-.edit_form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: baseline;
-}
-.edit_items {
-    display: flex;
-    flex-direction: column;
-    width: 15vw;
-    margin-bottom: 5px;
-}
-.edit_items > label {
-    font-size: 1.1rem;
-    color: var(--headers);
-    margin-bottom: 3px;
-}
-.edit_items > input {
-    background: none;
-    border: none;
-    border-bottom: 1px solid var(--headers);
-}
-.edit_items > input:focus {
-    outline: none;
-}
-.edit_items_body {
-    display: flex;
-    flex-direction: column;
-    width: 15vw;
-    margin-bottom: 5px;
-}
-.edit_items_body > label {
-    font-size: 1.1rem;
-    color: var(--headers);
-    margin-bottom: 3px;
-}
-.edit_items_body > textarea {
-    padding-top: 15px;
-    margin-top: 15px;
-    resize: none;
-    background: none;
-    border: none;
-    border-bottom: 1px solid var(--headers);
-    border-right: 1px solid var(--headers);
-    min-width: 350px;
-}
-.edit_items_body > textarea:focus {
-    outline: none;
-}
+/* Добавьте следующие стили в ваш файл CSS */
 
-.edit_add_btn {
-    width: 120px;
-    height: 35px;
-    background: none;
+.container {
+    margin: 20px auto;
+    padding: 0 15px;
+    max-width: 800px;
+  }
+  
+  .heading {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .edit_form {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .edit_form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .edit_items {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .edit_items input,
+  .edit_items select,
+  .edit_items textarea {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .edit_items_body textarea {
+    height: 120px;
+  }
+  
+  .edit_add_btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
     border: none;
-    color: var(--text);
-    background-color: var(--orange);
-    border-radius: 3px;
-}
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit_add_btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .edit_add_btn:hover {
+    background-color: #2980b9;
+  }
+  
+  .alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  /* Оптимизация для мобильных устройств */
+  
+  @media screen and (max-width: 768px) {
+    .edit_form {
+      padding: 10px;
+    }
+  
+    .edit_form label {
+      font-size: 16px;
+    }
+  
+    .edit_items {
+      flex-direction: column;
+    }
+  
+    .edit_items input,
+    .edit_items select,
+    .edit_items textarea {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .edit_items_body textarea {
+      height: 150px;
+    }
+  }
+  
+  /* Дополнительные стили для желаемого оформления могут быть добавлены здесь */
+  
+  /* Добавьте остальные стили вашего компонента Edit */
+  

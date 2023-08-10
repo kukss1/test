@@ -47,10 +47,6 @@ function ProductInfo({ params }) {
         </span>
       </div>
       <div id="detailsCardText" className="details_description">
-        {/* <div className="tab">
-                    <button className="product_card_details_btn">Details</button>
-                    <button className="tablinks">About Seller</button>
-                </div> */}
         <div className="tab_content">
           <div className="tab_content_item">
             <span className="tab_content_body">
@@ -59,12 +55,6 @@ function ProductInfo({ params }) {
 
             <p className="text_muted">Product listed at {params.addedAt}</p>
           </div>
-          {/* <div id="aboutSeller" className="tabcontent-item">
-                        <p>Name: {params.name || "Not specified"}</p>
-                        <p>Email: {params.email}</p>
-                        <p>Telephone: {params.phone}</p>
-                        <p>City: {params.city}</p>
-                    </div> */}
         </div>
       </div>
     </>

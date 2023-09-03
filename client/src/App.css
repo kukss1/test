@@ -17,7 +17,7 @@
 @media (max-width:490px) {
     .infinite-scroll-component {
         display: grid !important;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         width: 100vw;
 
     }

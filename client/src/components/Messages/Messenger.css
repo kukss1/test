@@ -1,4 +1,4 @@
-/* Messenger.css */
+/* Messenger.css
 .messages-container {
     padding: 10px;
   }
@@ -129,4 +129,208 @@
     color: #007bff;
     cursor: pointer;
   }
-  
+   */
+/* Messenger.css */
+
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.messages-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.messenger-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.messenger_wrapper_aside {
+  flex: 1;
+  max-width: 300px;
+}
+
+.chat_connections_wrapper {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.chat_connections {
+  margin: 10px 0;
+}
+
+.chat_connections a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.chat_connections a img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.chat_member_wrapper {
+  margin-bottom: 20px;
+}
+
+.chat_member_wrapper a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.chat_member_wrapper a img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.message_wrapper {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.message {
+  display: block;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
+
+.me .message {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.not-me .message {
+  background-color: #f2f2f2;
+}
+
+.message_write_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.message_send_area {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.message_place {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.message_btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.message_btn:hover {
+  background-color: #0056b3;
+}
+
+.dismissible-alert {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-button {
+  background-color: transparent;
+  border: none;
+  color: #721c24;
+  cursor: pointer;
+}
+
+/* Messenger.css */
+
+@media (max-width: 768px) {
+  .messenger-wrapper {
+    flex-direction: column;
+  }
+
+  .messenger_wrapper_aside {
+    max-width: none;
+    margin-bottom: 20px;
+  }
+
+  .message_wrapper {
+    max-height: 300px;
+  }
+  .me ,.not-me .message {
+    word-wrap: break-word;
+  }
+
+  .message_send_area {
+    flex-direction: column;
+  }
+
+  .message_place {
+    margin-top: 10px;
+  }
+}
+
+/* Additional styles for tablets (optional) */
+@media (max-width: 1024px) {
+  .messages-container {
+    padding: 10px;
+  }
+
+  .messages-header {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .chat_connections a img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .chat_member_wrapper a img {
+    width: 40px;
+    height: 40px;
+  }
+  .me ,.not-me .message {
+    word-wrap: break-word;
+  }
+
+  .message {
+    padding: 3px;
+  }
+
+  .message_btn {
+    padding: 6px 16px;
+  }
+}

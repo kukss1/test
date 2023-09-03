@@ -10,9 +10,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    max-width: 1200px;
+    max-width: 100vw;
     margin: 0 auto;
   }
+ 
   
   .logo {
     display: flex;
@@ -20,21 +21,36 @@
     text-decoration: none;
     color: white;
   }
-  
-  .parts {
-    font-size: 28px;
-    font-weight: bold;
-    margin: 0;
+  .logo a img {
+    width: 155px;
   }
-  
-  .hub {
-    font-size: 28px;
-    font-weight: bold;
-    margin: 0;
-    color: var(--lowBlue);
-    margin-left: 5px;
+
+  .support_nav h3 svg{
+    margin-right: 10px;
   }
-  
+.support_nav h3{
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.support_nav a {
+  margin-left: 15px;
+}
+.support_nav a svg {
+  margin-right: 5px;
+}
+.nav_support_links {
+  display: flex;
+}
+.whatsapp {
+  display: flex;
+  color: #25D366;
+}
+
+.telegram {
+  display: flex;
+  color: #0088cc;
+}
+
   .header_container_rightSide {
     display: flex;
     align-items: center;
@@ -58,10 +74,16 @@
     background-color: rgba(255, 255, 255, 0.2);
     color: #ffcc29;
   }
+  .add_a_sell {
+    display: flex;
+  }
+  .add_a_sell > p{
+    margin-left: 1vw;
+  }
   
   .navImg {
-    width: 40px;
-    height: 40px;
+    width: 75px;
+    height: 50px;
     border-radius: 50%;
     cursor: pointer;
     margin-left: 10px;
@@ -106,4 +128,37 @@
     font-size: 16px;
     margin-left: 10px;
   }
+
+  @media (max-width: 518px) {
+    .nav_support_links {
+      display: flex;
+      justify-content: flex-start;
+      margin-right: 50px;
+    }
+    .support_nav {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
   
+  @media (max-width: 768px) {
+    .logo a img {
+      width: 75px;
+    }
+    .support_nav h3{
+      font-size: 14px;
+    }
+    .add_a_sell p {
+      font-size: 12px;
+    }
+    .whatsapp p,.telegram p {
+      display: none;
+    }
+    .nav_support_links {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+

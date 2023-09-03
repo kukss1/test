@@ -15,6 +15,27 @@ function DismissibleAlert({ onClose, children }) {
   );
 }
 
+function renderUserName(chat) {
+  const { isBuyer, seller, buyer } = chat;
+
+  if (isBuyer === null) {
+    return <span>Missing data</span>;
+  }
+
+  const user = isBuyer ? seller : buyer;
+
+  if (!user) {
+    return <span>Missing user data</span>;
+  }
+
+  return (
+    <>
+      <img src={user.avatar} alt="user-avatar" />
+      <span>{user.name}</span>
+    </>
+  );
+}
+
 function Messages({ match }) {
   let chatId = match.params.id;
   const [conversations, setConversations] = useState([]);
@@ -45,6 +66,7 @@ function Messages({ match }) {
     getUserConversations()
       .then((res) => {
         setConversations(res);
+        console.log("Fetched conversations:", res);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -93,20 +115,10 @@ function Messages({ match }) {
                     onClick={() => setIsSelected(true)}
                     to={`/messages/${x.chats._id}`}
                   >
-                    {x.chats && x.isBuyer !== undefined ? (
-                      x.isBuyer ? (
-                        <>
-                          <img src={x.chats.seller.avatar} alt="user-avatar" />{" "}
-                          <span>{x.chats.seller.name}</span>
-                        </>
-                      ) : (
-                        <>
-                          <img src={x.chats.buyer.avatar} alt="user-avatar" />{" "}
-                          <span>{x.chats.buyer.name}</span>
-                        </>
-                      )
+                    {x.chats ? (
+                      renderUserName(x.chats)
                     ) : (
-                      <span>Missing data</span> // Подставьте здесь какое-то значение по умолчанию или обработку отсутствующих данных
+                      <span>Missing data</span>
                     )}
                   </Link>
                 </div>

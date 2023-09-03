@@ -2,16 +2,16 @@ const express = require("express");
 const app = express();
 const { PORT } = require("./config/config");
 const http = require("http").createServer(app);
-const auth = require("./middlewares/auth");
+// const auth = require("./middlewares/auth");
 const routes = require("./routes");
 require("dotenv").config();
 require("./config/express")(app);
 require("./config/mongoose");
-app.use(auth());
+// app.use(auth());
 
 const io = require("socket.io")(http, {
   cors: {
-    origin: ["http://localhost:3000/"],
+    origin: ["http://192.168.39.203:3000"],
     credentials: true,
   },
 });
@@ -47,7 +47,7 @@ io.on("input", async function (data) {
 });
 
 app.use(routes);
-// http.listen(PORT, () =>
-//   console.log(`Server is running at http://localhost:${PORT}...`)
-// );
-app.listen(PORT, () => console.log(`Server is listening on port ${PORT}...`));
+http.listen(PORT, () =>
+  console.log(`Server is running at http://localhost:${PORT}...`)
+);
+// app.listen(PORT, () => console.log(`Server is listening on port ${PORT}...`));

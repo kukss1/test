@@ -39,13 +39,16 @@ function Profile({ match, history }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     getUserById(match.params.id)
-      .then((res) => setUser(res.user))
+      .then((res) => {
+        setUser(res.user);
+        console.log(res.user);
+      })
       .catch((err) => console.log(err));
   }, [match.params.id]);
 
   return (
     <>
-      {user.isMe ? (
+      {localStorage.userData ? (
         <>
           <ProfileSection params={user} />
           <div className="profile_wrapper">

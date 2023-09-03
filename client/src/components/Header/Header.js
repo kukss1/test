@@ -5,9 +5,12 @@ import {
   BsFillPersonFill,
   BsFillEnvelopeFill,
   BsFillPlusCircleFill,
+  BsWhatsapp,
+  BsTelegram,
 } from "react-icons/bs";
+import { BiSupport } from "react-icons/bi";
 import { IoLogOut } from "react-icons/io5";
-
+import logo from "../../Logos/Logo_New_Web.webp";
 
 import "./Header.css";
 
@@ -19,16 +22,45 @@ function Header() {
       <div className="header_container">
         <div className="logo">
           <NavLink to="/">
-            <h1 className="parts">Parts</h1>
-            <h1 className="hub">Hub</h1>
+            <img src={logo} alt="Logo" />
           </NavLink>
         </div>
+
+        <nav className="support_nav">
+          <h3>
+            <BiSupport />
+            24/7 Աջակցություն
+          </h3>
+          <div className="nav_support_links">
+            <a
+              href="https://wa.me/+37495166622"
+              target="blank"
+              rel="noreferrer"
+              className="whatsapp"
+            >
+              <BsWhatsapp />
+              <p>Whatsapp</p>
+            </a>
+            <a
+              href="http://t.me/torosyan1666"
+              target="blank"
+              rel="noreferrer"
+              className="telegram"
+            >
+              <BsTelegram />
+
+              <p>Telegram</p>
+            </a>
+          </div>
+        </nav>
+
         <div className="header_container_rightSide">
           {userData ? (
             <nav className="logged_in_nav_wrapper">
               <NavLink className="nav_item" to="/add-product">
-                <span title="Add a sell">
+                <span title="Add_a_sell" className="add_a_sell">
                   <BsFillPlusCircleFill />
+                  <p>Ավելացնել Հայտարարություն</p>
                 </span>
               </NavLink>
 
@@ -44,12 +76,12 @@ function Header() {
                     to={`/profile/${userData._id}`}
                   >
                     <BsFillPersonFill />
-                   <p>Անձնական Էջ</p> 
+                    <p>Անձնական Էջ</p>
                   </NavLink>
 
                   <NavLink className="dropdown-item" to="/messages">
                     <BsFillEnvelopeFill />
-                   <p>Նամակներ</p> 
+                    <p>Նամակներ</p>
                   </NavLink>
 
                   <NavLink

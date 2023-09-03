@@ -26,6 +26,7 @@ function Login({ history }) {
       .then((res) => {
         if (!res.error) {
           setUserData(res.user);
+          localStorage.setItem("userData", JSON.stringify(res.user));
           history.push("/");
         } else {
           setLoading(false);

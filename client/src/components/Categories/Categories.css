@@ -15,18 +15,19 @@
 }
 
 .categories_nav_btn {
-    background-color: #007bff;
+    background-color: var(--lowBlue);
     color: white;
     border: none;
-    border-radius: 5px;
-    padding: 8px 16px;
-    font-size: 14px;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .categories_nav_btn:hover {
-    background-color: #0056b3;
+   background-color: #00bcd4;
+    
 }
 
 .categories_nav_btn_other_wrapper {
@@ -35,18 +36,18 @@
 }
 
 .categories_nav_btn_other {
-    background-color: #007bff;
-    color: white;
+    background-color: transparent;
+    color: var(--lowBlue);
     border: none;
-    border-radius: 5px;
-    padding: 8px 16px;
-    font-size: 14px;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .categories_nav_btn_other:hover {
-    background-color: #0056b3;
+    color: #00bcd4;
 }
 
 /* Categories.css */
